@@ -1,0 +1,39 @@
+.form{
+    width: 400px;
+    height: auto;
+    padding: 20px;
+    border: 1px dotted black;
+}
+
+.navbar-nav{
+    display: flex;
+}
+
+.homepage-top{
+    padding: 50px 0;
+}
+.homepage-top-second{
+    padding: 20px 0 50px 0;
+}
+.home-table-width{
+    width: 80%;
+    margin: 20px auto;
+}
+.home-table, th, td{
+    border: 1px solid black;
+}
+.create{
+    margin-left: 30px;
+}
+.edit{
+    margin-right: 20px;
+    width: 70px;
+}
+
+.btn-edit a{
+    color: white;
+    text-decoration: none;
+}
+.btn-edit{
+    width: 60px;
+}
