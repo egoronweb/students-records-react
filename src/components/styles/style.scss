@@ -1,0 +1,156 @@
+
+a{
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}
+.wrapper{
+    min-height: 100vh;
+    width: 100%;
+    background: url('https://undsgn.com/wp-content/uploads/2018/04/01_funny-and-inspiring-graphic-design-related-gifs.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    .navbar{
+        width: 100%;
+        height: 60px;
+        background: linear-gradient((160deg), #9F98E8, #AFF6CF);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+
+
+        .navbar-logo{
+            font-size: 36px;
+            padding: 0 20px;
+            font-family: 'Mr Dafoe', cursive;
+
+            span{
+                color: red;
+                font-weight: 700;
+                font-size: 30px;
+            }
+        }
+
+        .navbar-texts{
+            display: inline-flex;
+
+            span{
+                padding: 5px 0;
+                transition: .3s;
+            }
+            a{
+                padding: 5px 30px;
+                margin-left: -30px;
+                transition: .3s;
+            }
+        }
+    }
+
+    .home-title{
+        text-align: center;
+        padding: 50px 0;
+    }
+    .home-content{
+        text-align: center;
+    }
+    .home-content-btns{
+        
+        :hover{
+            transform: scale(1.1);
+        }
+        .login-btn{
+            margin-right: 20px;
+        }
+        .home-btn{
+            border: none;
+            border-radius: 5px;
+            width: 100px;
+            padding: 10px;
+            background: linear-gradient(90deg, #0D324D, #7F5A83);
+            color: white;
+        }
+    }
+
+    .form{
+        width: 400px;
+        height: auto;
+        padding: 20px 20px 50px 20px;
+        border-radius: 10px;
+        margin: 50px auto;
+        background: white;
+
+        .btn-back-container{
+            width: 100%;
+            text-align: right;
+        }
+        .mb-3{
+            
+            .form-title{
+                font-size: 24px;
+                text-align: center;
+                padding: 0 20px;
+            }
+        }
+    }
+
+    .homepage{
+        text-align: center;
+
+        .homepage-top{
+            padding: 30px 0;
+
+            .title{
+                font-size: 20px;
+            }
+        }
+
+        .homepage-top-second{
+            padding: 20px 0;
+
+            .date{
+                padding: 5px 10px;
+                border: none;
+                border-radius: 15px;
+                font-weight: 600;
+                color: black;
+                text-align: center;
+            }
+        }
+
+        .main-content{
+
+            .create{
+                margin: 20px 50px;
+           }
+           .search{
+            border-radius: 20px;
+            border: none;
+            text-align: center;
+            padding: 5px 10px;
+            background-color: black;
+            font-weight: 600;
+            color: white;
+           }
+        }
+        table{
+            width: 80%;
+            margin: 0 auto;
+            background-color: white;
+            td, th{
+                border: 1px solid black;
+
+                .btn-del, .btn-edit{
+                    transition: 1s;
+
+                    :hover{
+                        transform: scale(1.3);
+                    }
+                }
+            }
+        }
+    }
+}
