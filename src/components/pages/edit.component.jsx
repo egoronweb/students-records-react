@@ -40,7 +40,7 @@ class EditInfo extends React.Component{
                 const resp = await axios.put(`http://127.0.0.1:8000/api/dashboard/edit/update/${student_id}`, this.state);
                 if(resp.data.status === 200){
                 swal("Users Updated Successfully!","Redirecting...", "success");
-                window.location.href = "/dashboard";
+                setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
                         fullname: '',
                         semester: '',
@@ -70,13 +70,13 @@ class EditInfo extends React.Component{
                     </div>
                         <div className="mb-3">
                             <label htmlFor="fullname" className="form-label">Full Name</label>
-                            <input type="text" className="form-control" id="fullname" name="fullname" onChange = {e => 
+                            <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange = {e => 
                             this.setState({fullname:e.target.value})}
                                 value={this.state.fullname}/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="semester" className="form-label">Semester</label>
-                            <input type="number" className="form-control" id="semester" name="semester" onChange = {e => 
+                            <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange = {e => 
                             this.setState({semester:e.target.value})}
                             value = {this.state.semester}/>
                         </div>
@@ -88,7 +88,7 @@ class EditInfo extends React.Component{
                         </div>
                         <div className="mb-3">
                             <label htmlFor="final_grade" className="form-label">Final Grade</label>
-                            <input type="number" step="0.01" className="form-control" id="final_grade" name="final_grade" onChange = {e => 
+                            <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange = {e => 
                             this.setState({final_grade:e.target.value})}
                             value = {this.state.final_grade}/>
                         </div>

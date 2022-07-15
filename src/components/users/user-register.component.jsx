@@ -10,37 +10,39 @@ function UserRegister(){
         re_password: '',
     });
 
-    async function saveUser(e) {
-        e.preventDefault();
-
-        await axios.post('http://127.0.0.1:8000/api/register', {
-            username: userData.username,
-            password: userData.password,
-            re_password: userData.re_password,
-        })
-        .then(resp => {
-            swal("Users Added Successfully!", "Redirecting...", "success");
-            window.location.href = "/login";
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    }
 
     function handle(e) {
         const newData = {...userData};
         newData[e.target.id] = e.target.value;
         setUserData(newData);
     }
+
+    async function saveUser(e) {
+        e.preventDefault();
+
+        const resp = await axios.post('http://127.0.0.1:8000/api/register', {
+            username: userData.username,
+            password: userData.password,
+            re_password: userData.re_password,
+        });
+
+        if(resp.data.status === 200){
+            swal("Users Added Successfully!", "Redirecting...", "success");
+            setTimeout(() => window.location.href = "/login", 1000);
+        }else{
+            swal("Password not Match!", "Please confirm again", "error");
+        };
+    };
+
    
     return(
         <div className="wrapper">
             <nav className="navbar">
                 <div className="navbar-logo">Student's Record</div>
                 <ul className="navbar-texts">
-                    <span class="material-symbols-outlined">home</span><a href="/">Home</a>
-                    <span class="material-symbols-outlined">login</span><a href="/login">Login</a>
-                    <span class="material-symbols-outlined">how_to_reg</span><a href="/register">Register</a>
+                    <span className="material-symbols-outlined">home</span><a href="/">Home</a>
+                    <span className="material-symbols-outlined">login</span><a href="/login">Login</a>
+                    <span className="material-symbols-outlined">how_to_reg</span><a href="/register">Register</a>
                 </ul>
             </nav>
 

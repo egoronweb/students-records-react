@@ -16,8 +16,7 @@ class Dashboard extends React.Component{
         }
     }
 
-
-
+    
     async componentDidMount(){
         const resp = await axios.get('http://127.0.0.1:8000/api/dashboard');
         const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
@@ -40,12 +39,12 @@ class Dashboard extends React.Component{
           })
           .then((willDelete) => {
             if(willDelete) {
-                swal("Information Deleted!", {
+                swal("Information Deleted!","Wait for a moment...", {
                     icon: "success",
                   });
               axios.delete(`http://127.0.0.1:8000/api/dashboard/delete/${id}`)
               .then(res => {
-                window.location.href = "/dashboard";
+                setTimeout(() => window.location.href = "/dashboard", 1000);
               }).catch(err => {
                 swal("The information cannot be deleted!");
               })
@@ -162,6 +161,23 @@ class Dashboard extends React.Component{
                         </table>
                     </div>
                 </div>
+
+
+
+                <footer className='footer-bar'>
+                    <div className='footer-left'>
+                        <p>Terms and Conditions</p>
+                        <p>Privacy and Policy</p>
+                    </div>
+                    <div className='footer-center'>
+                        <p>egoron@mlgcl.edu.ph</p>
+                        <p>egoronweb@egoron.info</p>
+                    </div>
+                    <div className='footer-right'>
+                        <p>facebook</p>
+                        <p>Youtube</p>
+                    </div>
+                </footer>
             </div>
         );
     }

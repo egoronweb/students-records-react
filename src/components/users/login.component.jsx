@@ -17,9 +17,9 @@ function UserLogin(){
        let resp = await axios.post('http://127.0.0.1:8000/api/login', data);
        if(resp.data.status === 200){
         swal("Login Successfully!", "Redirecting...", "success");
-        window.location.href = "/dashboard";
+        setTimeout(() => window.location.href = "/dashboard", 1000);
        }else{
-        swal("Invalid Credentials!", "Please sign in again", "error");
+        swal("Invalid Credentials!", "Please check your username or password", "error");
        }
     }
 

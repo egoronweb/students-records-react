@@ -25,8 +25,8 @@ function CreateInfo(){
             final_grade: data.final_grade,
         })
         .then(resp => {
-            swal("Created Successfully!", "Redirecting...", "success");
-            window.location.href = "/dashboard/create";
+            swal("Created Successfully!", "Wait for a moment...", "success");
+            setTimeout(() => window.location.href = "/dashboard/create", 1000);
         })
         .catch(err => {
             swal(err, "Please fill-up again", "failed");
