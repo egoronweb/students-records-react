@@ -11,6 +11,7 @@ class EditInfo extends React.Component{
             fullname: '',
             semester: '',
             year: '',
+            grade_level: '',
             final_grade: '',
         }
 
@@ -26,6 +27,7 @@ class EditInfo extends React.Component{
                 fullname: resp.data.student.fullname,
                 semester: resp.data.student.semester,
                 year: resp.data.student.year,
+                grade_level: resp.data.student.grade_level,
                 final_grade: resp.data.student.final_grade,
             });
         }
@@ -45,6 +47,7 @@ class EditInfo extends React.Component{
                         fullname: '',
                         semester: '',
                         year: '',
+                        grade_level: '',
                         final_grade: '',
                     });
                 }
@@ -85,6 +88,12 @@ class EditInfo extends React.Component{
                             <input type="text" className="form-control" id="year" name="year" onChange={e => 
                             this.setState({year:e.target.value})}
                             value = {this.state.year}/>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="grade_level" className="form-label">Grade Level</label>
+                            <input type="number" min="1" max="4" className="form-control" id="grade_level" name="grade_level" onChange = {e => 
+                            this.setState({grade_level:e.target.value})}
+                            value = {this.state.grade_level}/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="final_grade" className="form-label">Final Grade</label>

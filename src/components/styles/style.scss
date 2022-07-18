@@ -119,6 +119,15 @@ a{
                 color: black;
                 text-align: center;
             }
+
+            .sem{
+                background-color: rgb(0, 255, 166);
+                width: 200px;
+                padding: 10px;
+                border-radius: 10px;
+                margin: 0 auto;
+                font-weight: 600;
+            }
         }
 
         .main-content{
@@ -152,6 +161,7 @@ a{
                 }
             }
         }
+
     }
 
     .footer-bar{
@@ -166,6 +176,8 @@ a{
         justify-content: space-evenly;
         align-items: center;
         text-align: center;
+        position: relative;
+        bottom: 0;
 
         p{
             transition: 1s;

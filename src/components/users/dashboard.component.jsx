@@ -27,8 +27,7 @@ class Dashboard extends React.Component{
             });
         }
     }
-
-
+    
     deleteStudent = async (e, id) =>{
         swal({
             title: "Are you sure?",
@@ -61,9 +60,9 @@ class Dashboard extends React.Component{
             return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
             student.semester.includes(this.state.nameSearchField);
         });
-        const filteredStudentsByYear = this.state.students.filter((student) => {
-            return student.year.includes(this.state.yearSearchField);
-        });
+        // const filteredStudentsByYear = this.state.students.filter((student) => {
+        //     return student.year.includes(this.state.yearSearchField);
+        // });
         let userTable = "";
         let remarks = "";
         if(this.state.loading === true){
@@ -80,11 +79,12 @@ class Dashboard extends React.Component{
                         <td>{item.fullname}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
+                        <td>{item.grade_level}</td>
                         <td>{item.final_grade}</td>
                         <td style={item.final_grade === "1.0" || item.final_grade <= "3.0" ? {color:'black'}:{color:'red'}}>{remarks}</td>
-                        <td>
-                        <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
-                        </td>
+                            <td>
+                            <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
+                            </td>
                         <td>
                             <button type="button" className="btn btn-danger btn-sm btn-del"><span className="material-symbols-outlined" onClick={e => this.deleteStudent(e, item.id)}>delete</span></button>
                         </td>
@@ -92,7 +92,6 @@ class Dashboard extends React.Component{
                 );
             });
         }
-
 
 
         return (
@@ -113,32 +112,33 @@ class Dashboard extends React.Component{
                     </div>
                     <div className='homepage-top-second'>
                         <p className='sem'>List of the Students</p>
-                        <input list="dates" name="date" id="date" className='date' placeholder='Search Batch Year Here' onChange={(e) => {
-                            const yearSearchField = e.target.value.toLocaleLowerCase();
+                        {/* <input list="dates" name="date" id="date" className='date' placeholder='Search Batch Year Here' 
+                        // onChange={(e) => {
+                        //     const yearSearchField = e.target.value.toLocaleLowerCase();
 
-                            this.setState(() => {
-                                return { yearSearchField};
-                            });
+                        //     this.setState(() => {
+                        //         return { yearSearchField};
+                        //     });
 
-                            }}/>
+                        //     }}
+                            />
                             <datalist id="dates">
                                 <option value="2001-2002" />
                                 <option value="2002-2003" />
                                 <option value="2003-2004" />
                                 <option value="2004-2005" />
                                 <option value="2005-2006" />
-                            </datalist>
+                            </datalist> */}
                     </div>
                     <div className='main-content'>
-                        <input type="search" name="search" id="search" className='search' placeholder='Search Name Here' onChange={(e) => {
+                        <input type="search" name="search" id="search" className='search' placeholder='Name or Semester' onChange={(e) => {
                             const nameSearchField = e.target.value.toLocaleLowerCase();
-
                             this.setState(() => {
                                 return { nameSearchField};
                             });
 
                             }}/>
-                        <a href="/dashboard/create"><button type='' className='btn btn-primary create'>Create</button></a>
+                        <a href="/dashboard/create"><button type='' className='btn btn-primary create'><span class="material-symbols-outlined">add</span>Add Student</button></a>
                         {/* <div className='btn-sems-container'>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
@@ -149,6 +149,7 @@ class Dashboard extends React.Component{
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Semester</th>
                                     <th scope="col">Year</th>
+                                    <th scope="col">Grade Level</th>
                                     <th scope="col">Final Grade</th>
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Edit</th>
@@ -164,7 +165,7 @@ class Dashboard extends React.Component{
 
 
 
-                <footer className='footer-bar'>
+                {/* <footer className='footer-bar'>
                     <div className='footer-left'>
                         <p>Terms and Conditions</p>
                         <p>Privacy and Policy</p>
@@ -177,7 +178,7 @@ class Dashboard extends React.Component{
                         <p>facebook</p>
                         <p>Youtube</p>
                     </div>
-                </footer>
+                </footer> */}
             </div>
         );
     }

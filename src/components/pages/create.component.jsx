@@ -12,6 +12,7 @@ function CreateInfo(){
         fullname: '',
         semester: '',
         year: '',
+        grade_level: '',
         final_grade: '',
     });
 
@@ -22,6 +23,7 @@ function CreateInfo(){
             fullname: data.fullname,
             semester: data.semester,
             year: data.year,
+            grade_level: data.grade_level,
             final_grade: data.final_grade,
         })
         .then(resp => {
@@ -68,6 +70,10 @@ function CreateInfo(){
                 <div className="mb-3">
                     <label htmlFor="year" className="form-label">Year</label>
                     <input type="text" className="form-control" id="year" name="year" onChange={e => handle(e)} value={data.year} placeholder="2000-2001"/>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="grade_level" className="form-label">Grade Level</label>
+                    <input type="number" min="1" max="4" className="form-control" id="grade_level" name="grade_level" onChange={e => handle(e)} value={data.grade_level} placeholder="1"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="final_grade" className="form-label">Final Grade</label>
