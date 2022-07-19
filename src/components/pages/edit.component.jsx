@@ -11,7 +11,7 @@ class EditInfo extends React.Component{
             fullname: '',
             semester: '',
             year: '',
-            grade_level: '',
+            year_level: '',
             final_grade: '',
         }
 
@@ -27,7 +27,7 @@ class EditInfo extends React.Component{
                 fullname: resp.data.student.fullname,
                 semester: resp.data.student.semester,
                 year: resp.data.student.year,
-                grade_level: resp.data.student.grade_level,
+                year_level: resp.data.student.year_level,
                 final_grade: resp.data.student.final_grade,
             });
         }
@@ -47,7 +47,7 @@ class EditInfo extends React.Component{
                         fullname: '',
                         semester: '',
                         year: '',
-                        grade_level: '',
+                        year_level: '',
                         final_grade: '',
                     });
                 }
@@ -61,9 +61,9 @@ class EditInfo extends React.Component{
                 <nav className="navbar">
                 <div className="navbar-logo">Student's Record</div>
                     <ul className="navbar-texts">
-                        <span className="material-symbols-outlined">home</span><a href="/">Home</a>
-                        <span className="material-symbols-outlined">login</span><a href="/login">Login</a>
-                        <span className="material-symbols-outlined">how_to_reg</span><a href="/register">Register</a>
+                        <span className="material-symbols-outlined">home</span><a href="/dashboard">Home</a>
+                        <span className="material-symbols-outlined">create</span><a href="/dashboard/create">Create</a>
+                        <span className="material-symbols-outlined">logout</span><a href="/login">Logout</a>
                     </ul>
                 </nav>
                 <div className="content">
@@ -75,31 +75,31 @@ class EditInfo extends React.Component{
                             <label htmlFor="fullname" className="form-label">Full Name</label>
                             <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange = {e => 
                             this.setState({fullname:e.target.value})}
-                                value={this.state.fullname}/>
+                                value={this.state.fullname} required/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="semester" className="form-label">Semester</label>
                             <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange = {e => 
                             this.setState({semester:e.target.value})}
-                            value = {this.state.semester}/>
+                            value = {this.state.semester} required/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="year" className="form-label">Year</label>
                             <input type="text" className="form-control" id="year" name="year" onChange={e => 
                             this.setState({year:e.target.value})}
-                            value = {this.state.year}/>
+                            value = {this.state.year} required/>
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="grade_level" className="form-label">Grade Level</label>
-                            <input type="number" min="1" max="4" className="form-control" id="grade_level" name="grade_level" onChange = {e => 
-                            this.setState({grade_level:e.target.value})}
-                            value = {this.state.grade_level}/>
+                            <label htmlFor="year_level" className="form-label">Year Level</label>
+                            <input type="number" min="1" max="4" className="form-control" id="year_level" name="year_level" onChange = {e => 
+                            this.setState({year_level:e.target.value})}
+                            value = {this.state.year_level} required/>
                         </div>
                         <div className="mb-3">
                             <label htmlFor="final_grade" className="form-label">Final Grade</label>
                             <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange = {e => 
                             this.setState({final_grade:e.target.value})}
-                            value = {this.state.final_grade}/>
+                            value = {this.state.final_grade} required/>
                         </div>
                         <button type="submit" className="btn btn-warning btn-update">Update</button>
                     </form>

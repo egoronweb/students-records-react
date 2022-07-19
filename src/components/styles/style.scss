@@ -4,6 +4,13 @@ a{
     list-style: none;
     color: black;
 }
+.error-page{
+    text-align: center;
+    height: 100vh;
+    width: 100%;
+    background-color: white;
+
+}
 .wrapper{
     min-height: 100vh;
     width: 100%;
@@ -48,6 +55,7 @@ a{
                 transition: .3s;
             }
         }
+
     }
 
     .home-title{
@@ -149,10 +157,12 @@ a{
             width: 80%;
             margin: 0 auto;
             background-color: white;
+            
+
             td, th{
                 border: 1px solid black;
 
-                .btn-del, .btn-edit{
+                .btn-modal, .btn-del, .btn-edit{
                     transition: 1s;
 
                     :hover{
@@ -185,6 +195,40 @@ a{
 
             &:hover{
                 text-decoration: underline;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 600px){
+    .wrapper{
+
+        .navbar{
+
+            .navbar-texts{
+                display: none;
+            }
+
+        }
+
+        .homepage{
+
+            .main-content{
+
+                .table{
+
+                    font-size: 11px;
+                    padding: 0;
+
+                    span{
+                        margin: 5px 10px 0 0;
+                    }
+                    button{
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
             }
         }
     }

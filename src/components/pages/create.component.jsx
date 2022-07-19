@@ -12,7 +12,7 @@ function CreateInfo(){
         fullname: '',
         semester: '',
         year: '',
-        grade_level: '',
+        year_level: '',
         final_grade: '',
     });
 
@@ -23,7 +23,7 @@ function CreateInfo(){
             fullname: data.fullname,
             semester: data.semester,
             year: data.year,
-            grade_level: data.grade_level,
+            year_level: data.year_level,
             final_grade: data.final_grade,
         })
         .then(resp => {
@@ -50,7 +50,7 @@ function CreateInfo(){
                 <div className="navbar-logo">Student's Record</div>
                 <ul className="navbar-texts">
                     <span className="material-symbols-outlined">home</span><a href="/dashboard">Home</a>
-                    <span className="material-symbols-outlined">login</span><a href="/dashboard/create">Create</a>
+                    <span className="material-symbols-outlined">create</span><a href="/dashboard/create">Create</a>
                     <span className="material-symbols-outlined">logout</span><a href="/login">Logout</a>
                 </ul>
             </nav>
@@ -61,23 +61,23 @@ function CreateInfo(){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="fullname" className="form-label">Full Name</label>
-                    <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange={e => handle(e)} value={data.fullname} placeholder="Fullname"/>
+                    <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange={e => handle(e)} value={data.fullname} placeholder="Fullname" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="semester" className="form-label">Semester</label>
-                    <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange={e => handle(e)} value={data.semester} placeholder="1"/>
+                    <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange={e => handle(e)} value={data.semester} placeholder="1" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="year" className="form-label">Year</label>
-                    <input type="text" className="form-control" id="year" name="year" onChange={e => handle(e)} value={data.year} placeholder="2000-2001"/>
+                    <input type="text" className="form-control" id="year" name="year" onChange={e => handle(e)} value={data.year} placeholder="2000-2001" required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="grade_level" className="form-label">Grade Level</label>
-                    <input type="number" min="1" max="4" className="form-control" id="grade_level" name="grade_level" onChange={e => handle(e)} value={data.grade_level} placeholder="1"/>
+                    <label htmlFor="year_level" className="form-label">Year Level</label>
+                    <input type="number" min="1" max="4" className="form-control" id="year_level" name="year_level" onChange={e => handle(e)} value={data.year_level} placeholder="1" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="final_grade" className="form-label">Final Grade</label>
-                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange={e => handle(e)} value={data.final_grade} placeholder="1.0"/>
+                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange={e => handle(e)} value={data.final_grade} placeholder="1.0" required/>
                 </div>
                 <button type="submit" className="btn btn-primary btn-save">Save</button>
             </form>

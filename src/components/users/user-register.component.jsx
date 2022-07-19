@@ -5,6 +5,7 @@ import '../styles/style.scss';
 function UserRegister(){
 
     const [userData, setUserData] = useState({
+        fullname: '',
         username: '',
         password: '',
         re_password: '',
@@ -21,6 +22,7 @@ function UserRegister(){
         e.preventDefault();
 
         const resp = await axios.post('http://127.0.0.1:8000/api/register', {
+            fullname: userData.fullname,
             username: userData.username,
             password: userData.password,
             re_password: userData.re_password,
@@ -47,10 +49,14 @@ function UserRegister(){
             </nav>
 
             <form onSubmit={saveUser} className='form' >
+            <p className="form-title">Register Form</p>
                 <div className="mb-3">
-                <p className="form-title">Register Form</p>
+                    <label htmlFor="fullname" className="form-label">Full Name</label>
+                    <input type="text" className="form-control" id="fullname" name="fullname" onChange={e => handle(e)} value={userData.fullname} placeholder="Full Name" required/>
+                </div>
+                <div className="mb-3">
                     <label htmlFor="username" className="form-label">Username</label>
-                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={userData.username} placeholder="username@gmail.com"/>
+                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={userData.username} placeholder="username@gmail.com" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>

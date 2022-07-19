@@ -4,12 +4,14 @@ import swal from 'sweetalert';
 import 'font-awesome/css/font-awesome.min.css';
 import '../styles/style.scss';
 
+
 class Dashboard extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
             students: [],
+            user: [],
             loading: true,
             nameSearchField: '',
             yearSearchField: '',
@@ -20,14 +22,17 @@ class Dashboard extends React.Component{
     async componentDidMount(){
         const resp = await axios.get('http://127.0.0.1:8000/api/dashboard');
         const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
+        const userInfo = localStorage.getItem('users', ['id', 'fullname', 'username']);
         if(resp.data.status === 200){
             this.setState({
                 students: alphaNames,
                 loading: false,
+                user: userInfo,
             });
         }
     }
-    
+
+   
     deleteStudent = async (e, id) =>{
         swal({
             title: "Are you sure?",
@@ -54,11 +59,12 @@ class Dashboard extends React.Component{
     }
    
 
+   
     render(){
 
         const filteredStudentsByName = this.state.students.filter((student) => {
             return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
-            student.semester.includes(this.state.nameSearchField);
+            student.year.includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
         //     return student.year.includes(this.state.yearSearchField);
@@ -79,7 +85,7 @@ class Dashboard extends React.Component{
                         <td>{item.fullname}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
-                        <td>{item.grade_level}</td>
+                        <td>{item.year_level}</td>
                         <td>{item.final_grade}</td>
                         <td style={item.final_grade === "1.0" || item.final_grade <= "3.0" ? {color:'black'}:{color:'red'}}>{remarks}</td>
                             <td>
@@ -93,16 +99,31 @@ class Dashboard extends React.Component{
             });
         }
 
-
+        // let userMenu = this.state.user.map((item) => {
+        //     return(
+        //         <span>{item.fullname}</span>
+        //     );
+        // });
         return (
             <div className='wrapper'>
                 <nav className="navbar">
                 <div className="navbar-logo">Student's Record</div>
                     <ul className="navbar-texts">
                         <span className="material-symbols-outlined">home</span><a href="/dashboard">Home</a>
-                        <span className="material-symbols-outlined">login</span><a href="/dashboard/create">Create</a>
+                        <span className="material-symbols-outlined">create</span><a href="/dashboard/create">Create</a>
                         <span className="material-symbols-outlined">logout</span><a href="/login">Logout</a>
                     </ul>
+                    {/* <div className="dropdown">
+                        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            {userMenu}
+                        </a>
+
+                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a href="/dashboard" className="dropdown-item">Home</a></li>
+                            <li><a href="/dashboard/create" className="dropdown-item">Create</a></li>
+                            <li><a href="/login" className="dropdown-item">Logout</a></li>
+                        </ul>
+                    </div> */}
                 </nav>
     
                 <div className='homepage'>
@@ -138,7 +159,7 @@ class Dashboard extends React.Component{
                             });
 
                             }}/>
-                        <a href="/dashboard/create"><button type='' className='btn btn-primary create'><span class="material-symbols-outlined">add</span>Add Student</button></a>
+                        <a href="/dashboard/create"><button type='button' className='btn btn-primary create'><span className="material-symbols-outlined">add</span>Add Student</button></a>
                         {/* <div className='btn-sems-container'>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
@@ -147,9 +168,9 @@ class Dashboard extends React.Component{
                             <thead>
                                 <tr>
                                     <th scope="col">Full Name</th>
-                                    <th scope="col">Semester</th>
+                                    <th scope="col">Sem</th>
                                     <th scope="col">Year</th>
-                                    <th scope="col">Grade Level</th>
+                                    <th scope="col">Year Level</th>
                                     <th scope="col">Final Grade</th>
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Edit</th>

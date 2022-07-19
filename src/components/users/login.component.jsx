@@ -1,13 +1,10 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import swal from 'sweetalert';
-
 import '../styles/style.scss';
 
 
 function UserLogin(){
-
-    const [loading, setLoading] = useState(true);
     const [data, setData] = useState({
         username: '',
         password: '',
@@ -18,6 +15,7 @@ function UserLogin(){
 
        let resp = await axios.post('http://127.0.0.1:8000/api/login', data);
        if(resp.data.status === 200){
+        localStorage.setItem('users', JSON.stringify(resp.data));
         swal("Login Successfully!", "Redirecting...", "success");
         setTimeout(() => window.location.href = "/dashboard", 1000);
        }else{
@@ -30,6 +28,8 @@ function UserLogin(){
         newData[e.target.id] = e.target.value;
         setData(newData);
     }
+
+   
     return(
         <div className="wrapper">
             <nav className="navbar">
@@ -45,7 +45,7 @@ function UserLogin(){
                 <div className="mb-3">
                     <p className="form-title">Login Form</p>
                     <label htmlFor="username" className="form-label">Username</label>
-                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder="username@gmail.com"/>
+                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder="username@gmail.com" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
