@@ -106,25 +106,27 @@ class Dashboard extends React.Component{
         // });
         return (
             <div className='wrapper'>
-                <nav className="navbar">
-                <div className="navbar-logo">Student's Record</div>
-                    <ul className="navbar-texts">
-                        <span className="material-symbols-outlined">home</span><a href="/dashboard">Home</a>
-                        <span className="material-symbols-outlined">create</span><a href="/dashboard/create">Create</a>
-                        <span className="material-symbols-outlined">logout</span><a href="/login">Logout</a>
-                    </ul>
-                    {/* <div className="dropdown">
-                        <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                            {userMenu}
-                        </a>
-
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a href="/dashboard" className="dropdown-item">Home</a></li>
-                            <li><a href="/dashboard/create" className="dropdown-item">Create</a></li>
-                            <li><a href="/login" className="dropdown-item">Logout</a></li>
+                <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand logo" href="/">Student's Records</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/dashboard/create">Create</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/login">Logout</a>
+                            </li>
                         </ul>
-                    </div> */}
-                </nav>
+                    </div>
+                </div>
+            </nav>
     
                 <div className='homepage'>
                     <div className='homepage-top'>
@@ -186,20 +188,20 @@ class Dashboard extends React.Component{
 
 
 
-                {/* <footer className='footer-bar'>
+                <footer className='footer-bar'>
                     <div className='footer-left'>
                         <p>Terms and Conditions</p>
                         <p>Privacy and Policy</p>
                     </div>
                     <div className='footer-center'>
-                        <p>egoron@mlgcl.edu.ph</p>
+                        <p>e.goron@mlgcl.edu.ph</p>
                         <p>egoronweb@egoron.info</p>
                     </div>
                     <div className='footer-right'>
                         <p>facebook</p>
                         <p>Youtube</p>
                     </div>
-                </footer> */}
+                </footer>
             </div>
         );
     }

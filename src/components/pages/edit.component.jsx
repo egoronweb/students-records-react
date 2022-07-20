@@ -58,14 +58,28 @@ class EditInfo extends React.Component{
     render(){
         return(
             <div className="wrapper">
-                <nav className="navbar">
-                <div className="navbar-logo">Student's Record</div>
-                    <ul className="navbar-texts">
-                        <span className="material-symbols-outlined">home</span><a href="/dashboard">Home</a>
-                        <span className="material-symbols-outlined">create</span><a href="/dashboard/create">Create</a>
-                        <span className="material-symbols-outlined">logout</span><a href="/login">Logout</a>
-                    </ul>
-                </nav>
+                <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand logo" href="/">Student's Records</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/dashboard/create">Create</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
                 <div className="content">
                     <form onSubmit={this.updateStudent} className='form' >
                     <div className="btn-back-container">

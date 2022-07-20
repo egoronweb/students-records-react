@@ -15,7 +15,7 @@ function UserLogin(){
 
        let resp = await axios.post('http://127.0.0.1:8000/api/login', data);
        if(resp.data.status === 200){
-        localStorage.setItem('users', JSON.stringify(resp.data));
+        // localStorage.setItem('users', JSON.stringify(resp.data));
         swal("Login Successfully!", "Redirecting...", "success");
         setTimeout(() => window.location.href = "/dashboard", 1000);
        }else{
@@ -32,14 +32,27 @@ function UserLogin(){
    
     return(
         <div className="wrapper">
-            <nav className="navbar">
-                <div className="navbar-logo">Student's Record</div>
-                    <ul className="navbar-texts">
-                        <span className="material-symbols-outlined">home</span><a href="/">Home</a>
-                        <span className="material-symbols-outlined">login</span><a href="/login">Login</a>
-                        <span className="material-symbols-outlined">how_to_reg</span><a href="/register">Register</a>
-                    </ul>
-                </nav>
+            <nav className="navbar navbar-expand-lg bg-light">
+                <div className="container-fluid">
+                    <a className="navbar-brand logo" href="/">Student's Records</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link  active" href="/login">Login</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <form onSubmit={loginUser} className='form' >
                 <div className="mb-3">
