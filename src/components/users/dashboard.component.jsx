@@ -11,7 +11,7 @@ class Dashboard extends React.Component{
 
         this.state = {
             students: [],
-            user: [],
+            fullname: '',
             loading: true,
             nameSearchField: '',
             yearSearchField: '',
@@ -20,15 +20,20 @@ class Dashboard extends React.Component{
 
     
     async componentDidMount(){
-        const resp = await axios.get('http://127.0.0.1:8000/api/dashboard');
-        const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
-        const userInfo = localStorage.getItem('users', ['id', 'fullname', 'username']);
-        if(resp.data.status === 200){
-            this.setState({
-                students: alphaNames,
-                loading: false,
-                user: userInfo,
-            });
+        const resp = await axios.get('http://192.168.2.109:8000/api/dashboard');
+        let userInfo = JSON.parse(localStorage.getItem('user'));
+        if(!userInfo || userInfo === null){
+            window.location.href = '/login';
+            console.log('You are not Authrozied');
+        }else{
+            const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
+            if(resp.data.status === 200){
+                this.setState({
+                    students: alphaNames,
+                    loading: false,
+                    fullname: userInfo.user.fullname,
+                });
+        }
         }
     }
 
@@ -46,7 +51,7 @@ class Dashboard extends React.Component{
                 swal("Information Deleted!","Wait for a moment...", {
                     icon: "success",
                   });
-              axios.delete(`http://127.0.0.1:8000/api/dashboard/delete/${id}`)
+              axios.delete(`http://192.168.2.109:8000/api/dashboard/delete/${id}`)
               .then(res => {
                 setTimeout(() => window.location.href = "/dashboard", 1000);
               }).catch(err => {
@@ -60,8 +65,13 @@ class Dashboard extends React.Component{
    
 
    
+    clearUser = () => {
+        localStorage.removeItem('user');
+    }
     render(){
 
+        let userFullname = this.state.fullname;
+       
         const filteredStudentsByName = this.state.students.filter((student) => {
             return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
             student.year.includes(this.state.nameSearchField);
@@ -72,7 +82,7 @@ class Dashboard extends React.Component{
         let userTable = "";
         let remarks = "";
         if(this.state.loading === true){
-            userTable = <tr><td colSpan="5"><h2>Fetching data please wait...</h2></td></tr>;
+            userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
                 if(item.final_grade === "1.0" || item.final_grade <= "3.0"){
@@ -104,11 +114,13 @@ class Dashboard extends React.Component{
         //         <span>{item.fullname}</span>
         //     );
         // });
+
+       
         return (
             <div className='wrapper'>
-                <nav className="navbar navbar-expand-lg bg-light">
+                <nav className="navbar navbar-expand-lg bg-light" id='navbar'>
                 <div className="container-fluid">
-                    <a className="navbar-brand logo" href="/">Student's Records</a>
+                    <a className="navbar-brand logo" id='logo' href="/">Student's Records</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -120,8 +132,16 @@ class Dashboard extends React.Component{
                             <li className="nav-item">
                                 <a className="nav-link" href="/dashboard/create">Create</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/login">Logout</a>
+                            <li className="nav-item nav-item-float-right">
+                                <div className="dropdown">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {userFullname}
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Acount Settings</a></li>
+                                        <li><a className="dropdown-item" href="/login" onClick={this.clearUser}>Logout</a></li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -166,7 +186,7 @@ class Dashboard extends React.Component{
                             <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
                         </div> */}
-                        <table className="table home-table home-table-width">
+                        <table className="table home-table home-table-width table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">Full Name</th>
@@ -189,18 +209,13 @@ class Dashboard extends React.Component{
 
 
                 <footer className='footer-bar'>
-                    <div className='footer-left'>
-                        <p>Terms and Conditions</p>
-                        <p>Privacy and Policy</p>
-                    </div>
-                    <div className='footer-center'>
-                        <p>e.goron@mlgcl.edu.ph</p>
-                        <p>egoronweb@egoron.info</p>
-                    </div>
-                    <div className='footer-right'>
-                        <p>facebook</p>
-                        <p>Youtube</p>
-                    </div>
+                   <ul className='footer-menu-texts'>
+                        <li><a href="/dashboard">Home</a></li>
+                        <li><a href="/dashboard/create">Create</a></li>
+                        <li><a href="/login" onClick={this.clearUser}>Logout</a></li>
+                   </ul>
+                   <div className='footer-line'></div>
+                   <span>© 2022 MLGCL, INC.</span>
                 </footer>
             </div>
         );

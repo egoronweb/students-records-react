@@ -1,20 +1,34 @@
 import React, {useState} from "react";
 import '../styles/style.scss';
+import { send } from 'emailjs-com';
+import swal from 'sweetalert';
 
 function HomePage(){
 
-    const [data, setData] = useState({
-        username: '',
-        password: '',
-    });
-
-
-    function handle(e) {
-        const newData = {...data};
-        newData[e.target.id] = e.target.value;
-        setData(newData);
-    }
-
+    const [toSend, setToSend] = useState({
+        sender: '',
+        receiver: '',
+        message: '',
+        receiver_email: '',
+      });
+    
+      const onSubmit = (e) => {e.preventDefault();
+        send('service_4igfe3y', 'template_tpwdw5c', toSend, 'bo1dd7DyK9JWPqNPs')
+          .then((response) => {
+            console.log('SUCCESS!', response.status, response.text);
+            swal("Message Sent!", "Please wait...", "success");
+            setTimeout(() => window.location.href = "/", 1000);
+          })
+          .catch((err) => {
+            console.log('FAILED...', err);
+            swal("Message not sent!", "Please try again!", "error");
+          });
+      };
+    
+      const handleChange = (e) => {
+        setToSend({ ...toSend, [e.target.name]: e.target.value });
+      };
+    
 
     return (
         <div className='wrapper'>
@@ -48,7 +62,7 @@ function HomePage(){
                         <p>Hilongos, Leyte</p>
                     </div>
                     <div className="home-description">
-                        <p>We keep students records and information that are listed in our school.</p>
+                        <p>We keep students records and grades information that are listed in our school.</p>
                     </div>
                     <div className="home-content-btns">
                         <a href="/login"><button type="button" className="login-btn home-btn">Login</button></a>
@@ -56,54 +70,37 @@ function HomePage(){
                     </div>
                 </div>
                 <div className="homepage-right">
-                <form onSubmit="" className='form' >
+                <form onSubmit={onSubmit} className="form">
                     <div className="mb-3">
-                        <p className="form-title">Message Us</p>
-                        <label htmlFor="username" className="form-label">Username:</label>
-                        <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder="username@gmail.com" required/>
+                        <label htmlFor="sender" className="form-label">Sender</label>
+                        <input type='text' name='sender' className="form-control" placeholder='Your Name' value={toSend.sender} onChange={handleChange}/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="title" className="form-label">Title:</label>
-                        <input type="text" className="form-control" id="title" name="title" onChange={e => handle(e)} value={data.title} placeholder="title" required/>
+                        <label htmlFor="receiver" className="form-label">Receiver</label>
+                        <input type='text' name='receiver' className="form-control" placeholder='Receiver Name' value={toSend.receiver} onChange={handleChange}/>
                     </div>
                     <div className="mb-3">
-                        <textarea name="message" id="message" className="message" placeholder="Message"></textarea>
+                        <label htmlFor="receiver_email" className="form-label">Receiver Email</label>
+                        <input type='text' name='receiver_email' className="form-control" placeholder='Receiver Email' value={toSend.receiver_email} onChange={handleChange}/>
+                    </div>
+                    <div className="mb-3">
+                        <textarea name="message" id="message" className="form-control" placeholder="Your Message" value={toSend.message} onChange={handleChange}></textarea>
                     </div>
                     <button type="submit" className="btn btn-primary">Send Message</button>
+                    <span className="note-red"><strong>Note</strong>&nbsp;that this is only a testing message form. Your message will be sent to my account even though you type another account. It will still send directly to me.</span>
                 </form>
                 </div>
             </div>
-        {/* <div className='content'>
-            <div className="home-title">
-                <h5>MLG COLLEGE OF LEARNING, INC.</h5>
-                <p>Hilongos, Leyte</p>
-            </div>
 
-            <div className="home-content">
-                <p>Student's Records</p>
-                <p></p>
-
-                <div className="home-content-btns">
-                    <a href="/login"><button type="button" className="login-btn home-btn">Login</button></a>
-                    <a href="/register"><button type="button" className="register-btn home-btn">Register</button></a>
-                </div>
-            </div>
-        </div> */}
-
-        <footer className='footer-bar'>
-            <div className='footer-left'>
-                <p>Terms and Conditions</p>
-                <p>Privacy and Policy</p>
-             </div>
-            <div className='footer-center'>
-                <p>egoron@mlgcl.edu.ph</p>
-                <p>egoronweb@egoron.info</p>
-            </div>
-            <div className='footer-right'>
-                <p>facebook</p>
-                <p>Youtube</p>
-            </div>
-        </footer>
+            <footer className='footer-bar'>
+                <ul className='footer-menu-texts'>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+                <div className='footer-line'></div>
+                <span>© 2022 MLGCL, INC.</span>
+            </footer>
 
     </div>
     );

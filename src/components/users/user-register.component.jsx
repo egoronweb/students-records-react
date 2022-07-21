@@ -21,7 +21,7 @@ function UserRegister(){
     async function saveUser(e) {
         e.preventDefault();
 
-        const resp = await axios.post('http://127.0.0.1:8000/api/register', {
+        const resp = await axios.post('http://192.168.2.109:8000/api/register', {
             fullname: userData.fullname,
             username: userData.username,
             password: userData.password,
@@ -82,6 +82,16 @@ function UserRegister(){
                 <p>Already have an account?<a href="/login">Login</a></p>
                 <button type="submit" className="btn btn-primary">Register</button>
             </form>
+
+            <footer className='footer-bar'>
+                   <ul className='footer-menu-texts'>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                   </ul>
+                   <div className='footer-line'></div>
+                   <span>© 2022 MLGCL, INC.</span>
+                </footer>
         </div>
     );
 }

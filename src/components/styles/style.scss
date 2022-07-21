@@ -12,31 +12,40 @@ a{
 
 }
 .wrapper{
+    padding-top: 80px;
     min-height: 100vh;
     width: 100%;
     background: url('https://undsgn.com/wp-content/uploads/2018/04/01_funny-and-inspiring-graphic-design-related-gifs.gif');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    font-family: 'Montserrat', sans-serif;
     
     .navbar{
+        width: 100%;
         background: linear-gradient(3deg, #0CBABA, #740270);
+        position: fixed;
+        top: 0;
         .container-fluid{
 
             .logo{
                 font-family: 'Mr Dafoe', cursive;
                 font-size: 32px;
             }
-            .navbar-nav{
+            .collapse{
 
-                .nav-link{
-                    color: white;
-                        font-size: 16px;
-                }
-
-                .active{
-                    text-decoration: underline;
-                    color: rgb(0, 255, 76);
+                .navbar-nav{
+                    display: flex;
+                    justify-content: space-between;
+                    .nav-link{
+                        color: white;
+                            font-size: 16px;
+                    }
+    
+                    .active{
+                        text-decoration: underline;
+                        color: rgb(0, 255, 76);
+                    }
                 }
             }
         }
@@ -166,14 +175,22 @@ a{
             color: white;
            }
         }
-        table{
+        .table{
             width: 80%;
             margin: 0 auto;
             background-color: white;
-            
 
             td, th{
                 border: 1px solid black;
+
+                
+                .material-symbols-outlined {
+                    font-variation-settings:
+                    'FILL' 0,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 48  
+                }
 
                 .btn-modal, .btn-del, .btn-edit{
                     transition: 1s;
@@ -187,6 +204,10 @@ a{
 
     }
 
+    .login-content{
+        min-height: 80vh;
+        height: auto;
+    }
     .content{
         min-height: 100vh;
         display: flex;
@@ -194,18 +215,37 @@ a{
         justify-content: space-evenly;
         height: auto;
 
-        .content-left{
-            width: 50%;
-        
-        }
 
-        .content-right{
-            width: 50%;
+        .homepage-right{
            
+            .form{
+                width: 360px;
+                height: auto;
+                padding: 20px 20px 50px 20px;
+                border-radius: 10px;
+                margin: 50px auto;
+                background: white;
+
+                textarea{
+                    width: 100%;
+                    height: 100px;
+                }
+                .note-red{
+                    display: flex;
+                    color: red;
+                    text-align: justify;
+                    margin-top: 10px;
+
+                    .note-strong{
+                        font-weight: 700;
+                    }
+                }
+            }
         }
         .home-content-btns{
             text-align: center;
         }
+
     }
 
     .footer-bar{
@@ -213,24 +253,29 @@ a{
         min-height: 100px;
         height: auto;
         margin-top: 50px;
-        background-color: black;
-        color: white;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        align-items: center;
         text-align: center;
-        position: relative;
-        bottom: 0;
-        font-size: 12px;
-
-        p{
-            transition: 1s;
-            cursor: pointer;
-
-            &:hover{
-                text-decoration: underline;
+        background-color: rgba(0, 0, 0, 0.716);
+        color: white;
+        padding: 10px;
+        .footer-menu-texts{
+            text-decoration: none;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            li{
+                a{
+                    padding: 0 10px;
+                    color: white;
+                }
             }
+        }
+        .footer-line{
+            background-color: white;
+            height: 2px;
+            width: 80%;
+            margin: 0 auto;
+            margin-bottom: 10px;
         }
     }
 
@@ -252,39 +297,50 @@ a{
         }
     }
 }
+
+
 @media (max-width: 600px){
     .wrapper{
 
-        .navbar{
-
-            .navbar-texts{
-                display: none;
-            }
-
-        }
 
         .homepage{
 
             .main-content{
 
                 .table{
-
                     font-size: 11px;
                     padding: 0;
+                    
+                    td, th{
+                        font-size: 8px;
+                        
+                        .loading-indicator{
+                            font-style: 11px;
+                        }
 
+                    }
                     span{
                         margin: 5px 10px 0 0;
                     }
                     button{
                         width: 40px;
                         height: 40px;
+                        
                     }
                 }
             }
         }
 
+        .content{
+            .homepage-right{
+                .form{
+                    width: 300px;
+                }
+            }
+        }
         .form{
-            width: 300px;
+            width: 330px;
         }
     }
 }
+

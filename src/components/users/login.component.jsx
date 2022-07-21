@@ -13,9 +13,9 @@ function UserLogin(){
     async function loginUser(e) {
         e.preventDefault();
 
-       let resp = await axios.post('http://127.0.0.1:8000/api/login', data);
+       let resp = await axios.post('http://192.168.2.109:8000/api/login', data);
        if(resp.data.status === 200){
-        // localStorage.setItem('users', JSON.stringify(resp.data));
+        localStorage.setItem('user', JSON.stringify(resp.data));
         swal("Login Successfully!", "Redirecting...", "success");
         setTimeout(() => window.location.href = "/dashboard", 1000);
        }else{
@@ -54,6 +54,7 @@ function UserLogin(){
                 </div>
             </nav>
 
+            <div className="login-content">
             <form onSubmit={loginUser} className='form' >
                 <div className="mb-3">
                     <p className="form-title">Login Form</p>
@@ -67,6 +68,17 @@ function UserLogin(){
                 <p>Don't have an account yet? <a href="/register">Register</a></p>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>
+
+            </div>
+            <footer className='footer-bar'>
+                   <ul className='footer-menu-texts'>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="/register">Register</a></li>
+                   </ul>
+                   <div className='footer-line'></div>
+                   <span>© 2022 MLGCL, INC.</span>
+                </footer>
         </div>
     );
 }

@@ -13,6 +13,7 @@ class EditInfo extends React.Component{
             year: '',
             year_level: '',
             final_grade: '',
+            userFullname: '',
         }
 
     }
@@ -20,18 +21,22 @@ class EditInfo extends React.Component{
      async componentDidMount() {
         const student_id = this.props.match.params.id;
 
-        let resp = await axios.get(`http://127.0.0.1:8000/api/dashboard/edit/${student_id}`);
-        console.log(resp);
-        if(resp.data.status === 200){
-          this.setState({
-                fullname: resp.data.student.fullname,
-                semester: resp.data.student.semester,
-                year: resp.data.student.year,
-                year_level: resp.data.student.year_level,
-                final_grade: resp.data.student.final_grade,
-            });
-        }
-        
+        let resp = await axios.get(`http://192.168.2.109:8000/api/dashboard/edit/${student_id}`);
+        let userInfo = JSON.parse(localStorage.getItem('user'));
+        if(!userInfo || userInfo === null){
+            window.location.href = '/login';
+        }else{
+            if(resp.data.status === 200){
+                this.setState({
+                      fullname: resp.data.student.fullname,
+                      semester: resp.data.student.semester,
+                      year: resp.data.student.year,
+                      year_level: resp.data.student.year_level,
+                      final_grade: resp.data.student.final_grade,
+                      userFullname: userInfo.user.fullname,
+                  });
+              }
+        } 
     }
 
 
@@ -39,7 +44,7 @@ class EditInfo extends React.Component{
         e.preventDefault();
         const student_id = this.props.match.params.id;
 
-                const resp = await axios.put(`http://127.0.0.1:8000/api/dashboard/edit/update/${student_id}`, this.state);
+                const resp = await axios.put(`http://192.168.2.109:8000/api/dashboard/edit/update/${student_id}`, this.state);
                 if(resp.data.status === 200){
                 swal("Users Updated Successfully!","Redirecting...", "success");
                 setTimeout(() => window.location.href = "/dashboard", 1000);
@@ -54,13 +59,18 @@ class EditInfo extends React.Component{
     }
 
 
+    clearUser = () => {
+        localStorage.removeItem('user');
+    }
 
     render(){
+
+        let userFullname = this.state.userFullname;
         return(
             <div className="wrapper">
-                <nav className="navbar navbar-expand-lg bg-light">
+            <nav className="navbar navbar-expand-lg bg-light" id='navbar'>
                 <div className="container-fluid">
-                    <a className="navbar-brand logo" href="/">Student's Records</a>
+                    <a className="navbar-brand logo" id='logo' href="/">Student's Records</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -72,8 +82,16 @@ class EditInfo extends React.Component{
                             <li className="nav-item">
                                 <a className="nav-link" href="/dashboard/create">Create</a>
                             </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="/">Logout</a>
+                            <li className="nav-item nav-item-float-right">
+                                <div className="dropdown">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {userFullname}
+                                    </button>
+                                    <ul className="dropdown-menu">
+                                        <li><a className="dropdown-item" href="#">Acount Settings</a></li>
+                                        <li><a className="dropdown-item" href="/login" onClick={this.clearUser}>Logout</a></li>
+                                    </ul>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -83,7 +101,7 @@ class EditInfo extends React.Component{
                 <div className="content">
                     <form onSubmit={this.updateStudent} className='form' >
                     <div className="btn-back-container">
-                        <a href="/dashboard"><button type="button" className="btn btn-primary btn-back">Back</button></a>
+                    <a href="/dashboard" className="btn btn-primary btn-back"><span className="material-symbols-outlined">undo</span>Back</a>
                     </div>
                         <div className="mb-3">
                             <label htmlFor="fullname" className="form-label">Full Name</label>
@@ -118,6 +136,15 @@ class EditInfo extends React.Component{
                         <button type="submit" className="btn btn-warning btn-update">Update</button>
                     </form>
                 </div>
+                <footer className='footer-bar'>
+                   <ul className='footer-menu-texts'>
+                        <li><a href="/dashboard">Home</a></li>
+                        <li><a href="/dashboard/create">Create</a></li>
+                        <li><a href="/login" onClick={this.clearUser}>Logout</a></li>
+                   </ul>
+                   <div className='footer-line'></div>
+                   <span>© 2022 MLGCL, INC.</span>
+                </footer>
             </div>
         );
     }
