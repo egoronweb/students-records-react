@@ -51,31 +51,6 @@ a{
         }
     }
 
-    .home-title{
-        text-align: center;
-        padding: 50px 0;
-    }
-    .home-content{
-        text-align: center;
-    }
-    .home-content-btns{
-        
-        :hover{
-            transform: scale(1.1);
-        }
-        .login-btn{
-            margin-right: 20px;
-        }
-        .home-btn{
-            border: none;
-            border-radius: 5px;
-            width: 100px;
-            padding: 10px;
-            background: linear-gradient(90deg, #0D324D, #7F5A83);
-            color: white;
-        }
-    }
-
     .form{
         width: 400px;
         height: auto;
@@ -98,6 +73,9 @@ a{
                     color: white;
                 }
             }
+        }
+        .form-lbl{
+            font-size: 13px;
         }
         .mb-3{
             
@@ -180,6 +158,17 @@ a{
             margin: 0 auto;
             background-color: white;
 
+            thead{
+                background-color: rgb(0, 132, 255);
+                color: white;
+            }
+            tbody{
+                tr{
+                    &:hover{
+                        background-color: rgba(255, 255, 0, 0.545);
+                    }
+                }
+            }
             td, th{
                 border: 1px solid black;
 
@@ -215,9 +204,54 @@ a{
         justify-content: space-evenly;
         height: auto;
 
+        .home-title{
+            padding: 50px 0;
+        }
+        .homepage-left{
+            text-align: center;
+            width: 50%;
+        }
 
+        .home-content-title-container{
+            text-align: left;
+            padding: 0 0 0 100px;
+
+            .home-content-title{
+                font-size: 38px;
+                font-weight: 600;
+                font-family: 'Abril Fatface', cursive;
+            }
+            .home-content-span{
+                color: rgb(11, 109, 131);
+                font-size: 48px;
+                text-decoration: underline;
+            }
+        }
+
+        .home-content-btns{
+
+            .login-btn{
+                margin-right: 20px;
+            }
+            .home-btn{
+                border: none;
+                border-radius: 20px 20px;
+                width: 150px;
+                padding: 10px;
+                background-color: transparent;
+                border: 2px solid rgb(0, 128, 255);
+                color: black;
+
+                &:hover{
+                    background-color: rgb(0, 128, 255);
+                    color: white;
+                    border: 2px solid white;
+                    font-weight: 600;
+                }
+            }
+        }
         .homepage-right{
-           
+            width: 50%;
             .form{
                 width: 360px;
                 height: auto;
@@ -230,15 +264,23 @@ a{
                     width: 100%;
                     height: 100px;
                 }
+                .receiver-note{
+                    color: red;
+                    font-size: 10px;
+                }
                 .note-red{
                     display: flex;
                     color: red;
                     text-align: justify;
                     margin-top: 10px;
+                    font-size: 12px;
 
                     .note-strong{
                         font-weight: 700;
                     }
+                }
+                .form-lbl{
+                    font-size: 13px;
                 }
             }
         }
@@ -332,7 +374,29 @@ a{
         }
 
         .content{
+            .homepage-left{
+                width: 100%;
+            
+                .home-title{
+                    padding: 25px 10px;
+                }
+                .home-content-title-container{
+                    padding: 0 10px;
+        
+                    .home-content-title{
+                        font-size: 18px;
+                        font-weight: 600;
+                        padding: 10px 0;
+                    }
+                    .home-content-span{
+                        color: rgb(11, 109, 131);
+                        font-size: 24px;
+                        text-decoration: underline;
+                    }
+                }
+            }
             .homepage-right{
+                width: 100%;
                 .form{
                     width: 300px;
                 }

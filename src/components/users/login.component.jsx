@@ -58,11 +58,11 @@ function UserLogin(){
             <form onSubmit={loginUser} className='form' >
                 <div className="mb-3">
                     <p className="form-title">Login Form</p>
-                    <label htmlFor="username" className="form-label">Username</label>
+                    <label htmlFor="username" className="form-label form-lbl">Username</label>
                     <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder="username@gmail.com" required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label form-lbl">Password</label>
                     <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={data.password} required placeholder="Password"/>
                 </div>
                 <p>Don't have an account yet? <a href="/register">Register</a></p>

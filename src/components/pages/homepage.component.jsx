@@ -6,10 +6,10 @@ import swal from 'sweetalert';
 function HomePage(){
 
     const [toSend, setToSend] = useState({
-        sender: '',
-        receiver: '',
+        from_name: '',
+        to_name: 'Efren Goron',
         message: '',
-        receiver_email: '',
+        sender_email: '',
       });
     
       const onSubmit = (e) => {e.preventDefault();
@@ -61,8 +61,12 @@ function HomePage(){
                         <h3>MLG COLLEGE OF LEARNING, INC.</h3>
                         <p>Hilongos, Leyte</p>
                     </div>
-                    <div className="home-description">
-                        <p>We keep students records and grades information that are listed in our school.</p>
+                    
+                    <div className="home-content-title-container">
+                        <div className="home-content-title">User Friendly and Beautiful <span className="home-content-span"> <br/> Student's Records Website</span></div>
+                        <div className="home-content-title-descrition">
+                            <p>Having a database for all the grade records of the students in our school is better for easy store and access of data</p>
+                        </div>
                     </div>
                     <div className="home-content-btns">
                         <a href="/login"><button type="button" className="login-btn home-btn">Login</button></a>
@@ -72,16 +76,17 @@ function HomePage(){
                 <div className="homepage-right">
                 <form onSubmit={onSubmit} className="form">
                     <div className="mb-3">
-                        <label htmlFor="sender" className="form-label">Sender</label>
-                        <input type='text' name='sender' className="form-control" placeholder='Your Name' value={toSend.sender} onChange={handleChange}/>
+                        <label htmlFor="from_name" className="form-label form-lbl">Sender Name:</label>
+                        <input type='text' name='from_name' className="form-control" placeholder='Your Name' value={toSend.from_name} onChange={handleChange}/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="receiver" className="form-label">Receiver</label>
-                        <input type='text' name='receiver' className="form-control" placeholder='Receiver Name' value={toSend.receiver} onChange={handleChange}/>
+                        <label htmlFor="to_name" className="form-label form-lbl">Receiver Name:</label>
+                        <input type='text' name='to_name' className="form-control" value={toSend.to_name}/>
+                        <span className="receiver-note"><strong>*</strong> Receiver name cannot be change.</span>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="receiver_email" className="form-label">Receiver Email</label>
-                        <input type='text' name='receiver_email' className="form-control" placeholder='Receiver Email' value={toSend.receiver_email} onChange={handleChange}/>
+                        <label htmlFor="sender_email" className="form-label form-lbl">Sender Email:</label>
+                        <input type='email' name='sender_email' className="form-control" placeholder='Your Email' value={toSend.sender_email} onChange={handleChange}/>
                     </div>
                     <div className="mb-3">
                         <textarea name="message" id="message" className="form-control" placeholder="Your Message" value={toSend.message} onChange={handleChange}></textarea>

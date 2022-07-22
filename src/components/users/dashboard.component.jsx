@@ -23,7 +23,7 @@ class Dashboard extends React.Component{
         const resp = await axios.get('http://192.168.2.109:8000/api/dashboard');
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
-            window.location.href = '/login';
+            window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
             const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
@@ -120,7 +120,7 @@ class Dashboard extends React.Component{
             <div className='wrapper'>
                 <nav className="navbar navbar-expand-lg bg-light" id='navbar'>
                 <div className="container-fluid">
-                    <a className="navbar-brand logo" id='logo' href="/">Student's Records</a>
+                    <a className="navbar-brand logo" id='logo' href="/dashboard">Student's Records</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                     </button>
@@ -156,14 +156,14 @@ class Dashboard extends React.Component{
                     <div className='homepage-top-second'>
                         <p className='sem'>List of the Students</p>
                         {/* <input list="dates" name="date" id="date" className='date' placeholder='Search Batch Year Here' 
-                        // onChange={(e) => {
-                        //     const yearSearchField = e.target.value.toLocaleLowerCase();
+                        onChange={(e) => {
+                            const yearSearchField = e.target.value.toLocaleLowerCase();
 
-                        //     this.setState(() => {
-                        //         return { yearSearchField};
-                        //     });
+                            this.setState(() => {
+                                return { yearSearchField};
+                            });
 
-                        //     }}
+                            }}
                             />
                             <datalist id="dates">
                                 <option value="2001-2002" />
@@ -174,7 +174,7 @@ class Dashboard extends React.Component{
                             </datalist> */}
                     </div>
                     <div className='main-content'>
-                        <input type="search" name="search" id="search" className='search' placeholder='Name or Semester' onChange={(e) => {
+                        <input type="search" name="search" id="search" className='search' placeholder='Name or Batch Year' onChange={(e) => {
                             const nameSearchField = e.target.value.toLocaleLowerCase();
                             this.setState(() => {
                                 return { nameSearchField};

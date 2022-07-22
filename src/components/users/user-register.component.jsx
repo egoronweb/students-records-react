@@ -26,14 +26,15 @@ function UserRegister(){
             username: userData.username,
             password: userData.password,
             re_password: userData.re_password,
-        });
-
-        if(resp.data.status === 200){
+        })
+        .then(res => {
             swal("Users Added Successfully!", "Redirecting...", "success");
             setTimeout(() => window.location.href = "/login", 1000);
-        }else{
-            swal("Password not Match!", "Please confirm again", "error");
-        };
+        })
+        .catch(err => {
+            swal("Password not Match or Account already taken!", "Please check and try again!", "error");
+        })
+
     };
 
    
@@ -62,21 +63,21 @@ function UserRegister(){
             </nav>
 
             <form onSubmit={saveUser} className='form' >
-            <p className="form-title">Register Form</p>
                 <div className="mb-3">
-                    <label htmlFor="fullname" className="form-label">Full Name</label>
+                <p className="form-title">Register Form</p>
+                    <label htmlFor="fullname" className="form-label form-lbl">Full Name</label>
                     <input type="text" className="form-control" id="fullname" name="fullname" onChange={e => handle(e)} value={userData.fullname} placeholder="Full Name" required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="username" className="form-label">Username</label>
+                    <label htmlFor="username" className="form-label form-lbl">Username</label>
                     <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={userData.username} placeholder="username@gmail.com" required/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label">Password</label>
+                    <label htmlFor="password" className="form-label form-lbl">Password</label>
                     <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={userData.password} required placeholder="Password"/>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="re_password" className="form-label">Retype-Password</label>
+                    <label htmlFor="re_password" className="form-label form-lbl">Retype-Password</label>
                     <input type="password" className="form-control" id="re_password" name="re_password" onChange={e => handle(e)} value={userData.re_password} required placeholder="Password"/>
                 </div>
                 <p>Already have an account?<a href="/login">Login</a></p>

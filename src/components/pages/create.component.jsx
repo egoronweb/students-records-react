@@ -21,7 +21,7 @@ class CreateInfo extends React.Component{
 
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
-            window.location.href = '/login';
+            window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
             this.setState({
@@ -30,7 +30,7 @@ class CreateInfo extends React.Component{
         }
     }
 
-    saveUser = async (e) => {
+    saveStudent = async (e) => {
         e.preventDefault(e);
 
         let resp = await axios.post('http://192.168.2.109:8000/api/dashboard/create', this.state);
@@ -84,27 +84,27 @@ class CreateInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="fullname" className="form-label">Full Name</label>
+                        <label htmlFor="fullname" className="form-label form-lbl">Full Name</label>
                         <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange = {e => 
-                            this.setState({fullname:e.target.value})} placeholder="Fullname" required/>
+                            this.setState({fullname:e.target.value})} placeholder="Full Name" required/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="semester" className="form-label">Semester</label>
+                        <label htmlFor="semester" className="form-label form-lbl">Semester</label>
                         <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange = {e => 
                             this.setState({semester:e.target.value})} placeholder="1" required/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="year" className="form-label">Year</label>
+                        <label htmlFor="year" className="form-label form-lbl">Year</label>
                         <input type="text" className="form-control" id="year" name="year" onChange = {e => 
                             this.setState({year:e.target.value})} placeholder="2000-2001" required/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="year_level" className="form-label">Year Level</label>
+                        <label htmlFor="year_level" className="form-label form-lbl">Year Level</label>
                         <input type="number" min="1" max="4" className="form-control" id="year_level" name="year_level" onChange = {e => 
                             this.setState({year_level:e.target.value})} placeholder="1" required/>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="final_grade" className="form-label">Final Grade</label>
+                        <label htmlFor="final_grade" className="form-label form-lbl">Final Grade</label>
                         <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange = {e => 
                             this.setState({final_grade:e.target.value})} placeholder="1.0" required/>
                     </div>
