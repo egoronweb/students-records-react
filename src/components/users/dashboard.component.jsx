@@ -174,7 +174,7 @@ class Dashboard extends React.Component{
                             </datalist> */}
                     </div>
                     <div className='main-content'>
-                        <input type="search" name="search" id="search" className='search' placeholder='Name or Batch Year' onChange={(e) => {
+                        <input type="search" name="search" id="search" className='search' placeholder='Name or Year Search Here' onChange={(e) => {
                             const nameSearchField = e.target.value.toLocaleLowerCase();
                             this.setState(() => {
                                 return { nameSearchField};

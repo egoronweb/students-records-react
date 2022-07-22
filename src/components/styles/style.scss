@@ -325,15 +325,28 @@ a{
 }
 
 @media (max-width: 991px){
+    .error-page{
+
+        .error-image{
+            width: 350px;
+        }
+    }
     .wrapper{
 
         .content{
             flex-direction: column;
             
             .homepage-left{
-
+                width: 100%;
                 p{
                     text-align: center;
+                }
+            }
+            .homepage-right{
+                width: 100%;
+
+                .home-content-title{
+                    padding: 0;
                 }
             }
         }
@@ -342,6 +355,12 @@ a{
 
 
 @media (max-width: 600px){
+    .error-page{
+
+        .error-image{
+            width: 200px;
+        }
+    }
     .wrapper{
 
 

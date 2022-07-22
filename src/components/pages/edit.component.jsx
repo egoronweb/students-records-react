@@ -46,7 +46,7 @@ class EditInfo extends React.Component{
 
                 const resp = await axios.put(`http://192.168.2.109:8000/api/dashboard/edit/update/${student_id}`, this.state);
                 if(resp.data.status === 200){
-                swal("Users Updated Successfully!","Redirecting...", "success");
+                swal("Information Updated Successfully!","Redirecting...", "success");
                 setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
                         fullname: '',
