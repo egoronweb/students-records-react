@@ -13,7 +13,7 @@ function UserLogin(){
     async function loginUser(e) {
         e.preventDefault();
 
-       let resp = await axios.post('http://192.168.2.109:8000/api/login', data);
+       let resp = await axios.post('https://students-records-laravel.herokuapp.com/api/login', data);
        if(resp.data.status === 200){
         localStorage.setItem('user', JSON.stringify(resp.data));
         swal("Login Successfully!", "Redirecting...", "success");

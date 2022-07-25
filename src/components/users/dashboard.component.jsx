@@ -20,7 +20,7 @@ class Dashboard extends React.Component{
 
     
     async componentDidMount(){
-        const resp = await axios.get('http://192.168.2.109:8000/api/dashboard');
+        const resp = await axios.get('https://students-records-laravel.herokuapp.com/api/dashboard');
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
             window.location.href = '/error';
@@ -51,7 +51,7 @@ class Dashboard extends React.Component{
                 swal("Information Deleted!","Wait for a moment...", {
                     icon: "success",
                   });
-              axios.delete(`http://192.168.2.109:8000/api/dashboard/delete/${id}`)
+              axios.delete(`https://students-records-laravel.herokuapp.com/api/dashboard/delete/${id}`)
               .then(res => {
                 setTimeout(() => window.location.href = "/dashboard", 1000);
               }).catch(err => {

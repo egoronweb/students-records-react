@@ -21,7 +21,7 @@ class EditInfo extends React.Component{
      async componentDidMount() {
         const student_id = this.props.match.params.id;
 
-        let resp = await axios.get(`http://192.168.2.109:8000/api/dashboard/edit/${student_id}`);
+        let resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/edit/${student_id}`);
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
             window.location.href = '/error';
@@ -44,7 +44,7 @@ class EditInfo extends React.Component{
         e.preventDefault();
         const student_id = this.props.match.params.id;
 
-                const resp = await axios.put(`http://192.168.2.109:8000/api/dashboard/edit/update/${student_id}`, this.state);
+                const resp = await axios.put(`https://students-records-laravel.herokuapp.com/api/dashboard/edit/update/${student_id}`, this.state);
                 if(resp.data.status === 200){
                 swal("Information Updated Successfully!","Redirecting...", "success");
                 setTimeout(() => window.location.href = "/dashboard", 1000);

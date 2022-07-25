@@ -33,7 +33,7 @@ class CreateInfo extends React.Component{
     saveStudent = async (e) => {
         e.preventDefault(e);
 
-        let resp = await axios.post('http://192.168.2.109:8000/api/dashboard/create', this.state);
+        let resp = await axios.post('https://students-records-laravel.herokuapp.com/api/dashboard/create', this.state);
         if(resp.data.status === 200){
             swal("Created Successfully!", "Wait for a moment...", "success");
             setTimeout(() => window.location.href = "/dashboard/create", 1000);

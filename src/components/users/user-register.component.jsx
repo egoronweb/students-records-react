@@ -21,7 +21,7 @@ function UserRegister(){
     async function saveUser(e) {
         e.preventDefault();
 
-        const resp = await axios.post('http://192.168.2.109:8000/api/register', {
+        const resp = await axios.post('https://students-records-laravel.herokuapp.com/api/register', {
             fullname: userData.fullname,
             username: userData.username,
             password: userData.password,
