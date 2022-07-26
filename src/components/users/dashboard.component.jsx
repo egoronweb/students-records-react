@@ -73,7 +73,7 @@ class Dashboard extends React.Component{
         let userFullname = this.state.fullname;
        
         const filteredStudentsByName = this.state.students.filter((student) => {
-            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || 
+            return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
             student.year.includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
