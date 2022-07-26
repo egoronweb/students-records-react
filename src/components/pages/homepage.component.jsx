@@ -81,7 +81,7 @@ function HomePage(){
                     </div>
                     <div className="mb-3">
                         <label htmlFor="to_name" className="form-label form-lbl">Receiver Name:</label>
-                        <input type='text' name='to_name' className="form-control" value={toSend.to_name}/>
+                        <input type='text' name='to_name' className="form-control" value={toSend.to_name} onChange={handleChange}/>
                         <span className="receiver-note"><strong>*</strong> Receiver name cannot be change.</span>
                     </div>
                     <div className="mb-3">
