@@ -1,7 +1,7 @@
 import React from "react";
 import '../styles/style.scss';
 function Landing()  {
-
+    
     return(
         <div className="error-page">
             <img src="https://th.bing.com/th/id/OIP.pEdaxciQTI9s1DHlMqaLVgHaHa?pid=ImgDet&rs=1" alt="" className="error-image"/>

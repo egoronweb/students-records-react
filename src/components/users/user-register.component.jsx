@@ -26,14 +26,16 @@ function UserRegister(){
             username: userData.username,
             password: userData.password,
             re_password: userData.re_password,
-        })
-        .then(res => {
+        });
+
+        if(resp.data.status === 200){
             swal("Users Added Successfully!", "Redirecting...", "success");
             setTimeout(() => window.location.href = "/login", 1000);
-        })
-        .catch(err => {
+        }else if(resp.data.status === 401){
             swal("Password not Match or Account already taken!", "Please check and try again!", "error");
-        })
+        }else{
+            swal("Error Request!", "Please try again after a few minutes!", "error");
+        }
 
     };
 
@@ -74,11 +76,11 @@ function UserRegister(){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label form-lbl">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={userData.password} required placeholder="Password"/>
+                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={userData.password} placeholder="Password" required/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="re_password" className="form-label form-lbl">Retype-Password</label>
-                    <input type="password" className="form-control" id="re_password" name="re_password" onChange={e => handle(e)} value={userData.re_password} required placeholder="Password"/>
+                    <input type="password" className="form-control" id="re_password" name="re_password" onChange={e => handle(e)} value={userData.re_password} placeholder="Retype Password" required/>
                 </div>
                 <p>Already have an account?<a href="/login">Login</a></p>
                 <button type="submit" className="btn btn-primary">Register</button>

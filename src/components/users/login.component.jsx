@@ -63,7 +63,7 @@ function UserLogin(){
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label form-lbl">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={data.password} required placeholder="Password"/>
+                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={data.password} placeholder="Password" required/>
                 </div>
                 <p>Don't have an account yet? <a href="/register">Register</a></p>
                 <button type="submit" className="btn btn-primary">Login</button>
