@@ -99,7 +99,7 @@ class CreateInfo extends React.Component{
                     </div>
                     <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" onChange = {e => this.setState({fullname:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="first_name" className="form-label form-lbl label-effect">First Name</label>
+                        <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
                     <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" onChange = {e => this.setState({subject:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="on"/>

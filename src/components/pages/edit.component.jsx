@@ -9,6 +9,7 @@ class EditInfo extends React.Component{
 
         this.state = {
             fullname: '',
+            subject: '',
             semester: '',
             year: '',
             year_level: '',
@@ -29,6 +30,7 @@ class EditInfo extends React.Component{
             if(resp.data.status === 200){
                 this.setState({
                       fullname: resp.data.student.fullname,
+                      subject: resp.data.students.subject,
                       semester: resp.data.student.semester,
                       year: resp.data.student.year,
                       year_level: resp.data.student.year_level,
@@ -50,6 +52,7 @@ class EditInfo extends React.Component{
                 setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
                         fullname: '',
+                        subject: '',
                         semester: '',
                         year: '',
                         year_level: '',
@@ -99,42 +102,69 @@ class EditInfo extends React.Component{
             </nav>
 
                 <div className="content">
-                    <form onSubmit={this.updateStudent} className='form' >
+                <form onSubmit={this.updateStudent} className='form' >
                     <div className="btn-back-container">
                     <a href="/dashboard" className="btn btn-primary btn-back"><span className="material-symbols-outlined">undo</span>Back</a>
+                        <p></p>
                     </div>
-                        <div className="mb-3">
-                            <label htmlFor="fullname" className="form-label form-lbl">Full Name</label>
-                            <input type="text" maxLength="40" className="form-control" id="fullname" name="fullname" onChange = {e => 
-                            this.setState({fullname:e.target.value})}
-                                value={this.state.fullname} required/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="semester" className="form-label form-lbl">Semester</label>
-                            <input type="number" min="1" max="2" className="form-control" id="semester" name="semester" onChange = {e => 
-                            this.setState({semester:e.target.value})}
-                            value = {this.state.semester} required/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="year" className="form-label form-lbl">Year</label>
-                            <input type="text" className="form-control" id="year" name="year" onChange={e => 
-                            this.setState({year:e.target.value})}
-                            value = {this.state.year} required/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="year_level" className="form-label form-lbl">Year Level</label>
-                            <input type="number" min="1" max="4" className="form-control" id="year_level" name="year_level" onChange = {e => 
-                            this.setState({year_level:e.target.value})}
-                            value = {this.state.year_level} required/>
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="final_grade" className="form-label form-lbl">Final Grade</label>
-                            <input type="number" step="0.01" min="1.0" max="5.0" className="form-control" id="final_grade" name="final_grade" onChange = {e => 
-                            this.setState({final_grade:e.target.value})}
-                            value = {this.state.final_grade} required/>
-                        </div>
-                        <button type="submit" className="btn btn-warning btn-update">Update</button>
-                    </form>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" onChange = {e => this.setState({fullname:e.target.value})} value={this.state.fullname} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" onChange = {e => this.setState({subject:e.target.value})} value={this.state.subject} placeholder=" " required autoComplete="off" autoCapitalize="on"/>
+                        <label htmlFor="subject" className="form-label form-lbl label-effect">Subject</label>
+                    </div>
+                    <div className="mb-3">
+                    <select name="semester" id="semester" className="form-control input-effect" onChange = {e => this.setState({semester:e.target.value})} value={this.state.semester}>
+                        <option disabled selected = "true">--select semester--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                        <label htmlFor="semester" className="form-label form-lbl label-effect">Semester</label>
+                    </div>
+                    <div className="mb-3">
+                    <select name="year" id="year" className="form-control input-effect" onChange = {e => this.setState({year:e.target.value})} value={this.state.year}>
+                        <option disabled selected = "true">--select batch year--</option>
+                        <option value="1999-2000">1999-2000</option>
+                        <option value="2000-2001">2000-2001</option>
+                        <option value="2001-2002">2001-2002</option>
+                        <option value="2002-2003">2002-2003</option>
+                        <option value="2003-2004">2003-2004</option>
+                        <option value="2004-2005">2004-2005</option>
+                        <option value="2005-2006">2005-2006</option>
+                        <option value="2006-2007">2006-2007</option>
+                        <option value="2007-2008">2007-2008</option>
+                        <option value="2008-2009">2008-2009</option>
+                        <option value="2009-2010">2009-2010</option>
+                        <option value="2010-2011">2010-2011</option>
+                        <option value="2011-2012">2011-2012</option>
+                        <option value="2012-2013">2012-2013</option>
+                        <option value="2013-2014">2013-2014</option>
+                        <option value="2014-2015">2014-2015</option>
+                        <option value="2015-2016">2015-2016</option>
+                        <option value="2016-2017">2016-2017</option>
+                        <option value="2017-2018">2017-2018</option>
+                        <option value="2018-2019">2018-2019</option>
+                    </select>
+                        <label htmlFor="year" className="form-label form-lbl label-effect">Year</label>
+                    </div>
+                    <div className="mb-3">
+                    <select name="year_level" id="year_level" className="form-control input-effect" onChange = {e => this.setState({year_level:e.target.value})} value={this.state.year_level}>
+                        <option disabled selected = "true">--select year level--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                        <label htmlFor="year_level" className="form-label form-lbl label-effect">Year Level</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} value={this.state.final_grade} placeholder=" " required autoComplete="off"/>
+                        <label htmlFor="final_grade" className="form-label form-lbl label-effect">Final Grade</label>
+                    </div>
+                    <button type="submit" className="btn btn-warning btn-update">Save</button>
+                </form>
                 </div>
                 <footer className='footer-bar'>
                    <ul className='footer-menu-texts'>
