@@ -26,7 +26,7 @@ class Dashboard extends React.Component{
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const alphaNames = resp.data.students.sort((a, b) => a.last_name.localeCompare(b.last_name));
+            const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
             if(resp.data.status === 200){
                 this.setState({
                     students: alphaNames,

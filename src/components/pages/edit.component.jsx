@@ -30,7 +30,7 @@ class EditInfo extends React.Component{
             if(resp.data.status === 200){
                 this.setState({
                       fullname: resp.data.student.fullname,
-                      subject: resp.data.students.subject,
+                      subject: resp.data.student.subject,
                       semester: resp.data.student.semester,
                       year: resp.data.student.year,
                       year_level: resp.data.student.year_level,
@@ -108,11 +108,11 @@ class EditInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" onChange = {e => this.setState({fullname:e.target.value})} value={this.state.fullname} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" value={this.state.fullname} onChange = {e => this.setState({fullname:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" onChange = {e => this.setState({subject:e.target.value})} value={this.state.subject} placeholder=" " required autoComplete="off" autoCapitalize="on"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" value={this.state.subject} onChange = {e => this.setState({subject:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
                         <label htmlFor="subject" className="form-label form-lbl label-effect">Subject</label>
                     </div>
                     <div className="mb-3">
@@ -160,10 +160,10 @@ class EditInfo extends React.Component{
                         <label htmlFor="year_level" className="form-label form-lbl label-effect">Year Level</label>
                     </div>
                     <div className="mb-3">
-                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} value={this.state.final_grade} placeholder=" " required autoComplete="off"/>
+                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} value={this.state.final_grade} required autoComplete="off"/>
                         <label htmlFor="final_grade" className="form-label form-lbl label-effect">Final Grade</label>
                     </div>
-                    <button type="submit" className="btn btn-warning btn-update">Save</button>
+                    <button type="submit" className="btn btn-warning btn-update">Update</button>
                 </form>
                 </div>
                 <footer className='footer-bar'>
