@@ -7,7 +7,7 @@ function HomePage(){
 
     const [toSend, setToSend] = useState({
         from_name: '',
-        to_name: 'Efren Goron',
+        to_name: '',
         message: '',
         sender_email: '',
       });
@@ -76,20 +76,20 @@ function HomePage(){
                 <div className="homepage-right">
                 <form onSubmit={onSubmit} className="form">
                     <div className="mb-3">
-                        <label htmlFor="from_name" className="form-label form-lbl">Sender Name:</label>
-                        <input type='text' name='from_name' className="form-control" placeholder='Your Name' value={toSend.from_name} onChange={handleChange}/>
+                    <input type='text' name='from_name' id="from_name" className="form-control input-effect" value={toSend.from_name} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                        <label htmlFor="from_name" className="form-label form-lbl label-effect">Sender Name</label>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="to_name" className="form-label form-lbl">Receiver Name:</label>
-                        <input type='text' name='to_name' className="form-control" value={toSend.to_name} onChange={handleChange}/>
-                        <span className="receiver-note"><strong>*</strong> Receiver name cannot be change.</span>
+                    <input type='text' name='to_name' id="to_name" className="form-control input-effect" value={toSend.to_name} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                        <label htmlFor="to_name" className="form-label form-lbl label-effect">Receiver Name</label>
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="sender_email" className="form-label form-lbl">Sender Email:</label>
-                        <input type='email' name='sender_email' className="form-control" placeholder='Your Email' value={toSend.sender_email} onChange={handleChange}/>
+                    <input type='email' name='sender_email' id="sender_email" className="form-control input-effect" value={toSend.sender_email} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                        <label htmlFor="sender_email" className="form-label form-lbl label-effect">Sender Email</label>
                     </div>
                     <div className="mb-3">
-                        <textarea name="message" id="message" className="form-control" placeholder="Your Message" value={toSend.message} onChange={handleChange}></textarea>
+                    <textarea name="message" id="message" className="form-control input-effect" value={toSend.message} onChange={handleChange} autoComplete="off" placeholder=" "></textarea>
+                        <label htmlFor="message" className="form-label form-lbl label-effect">Message</label>
                     </div>
                     <button type="submit" className="btn btn-primary">Send Message</button>
                     <span className="note-red"><strong>Note</strong>&nbsp;that this is only a testing message form. Your message will be sent to my account even though you type another account. It will still send directly to me.</span>

@@ -26,7 +26,7 @@ class Dashboard extends React.Component{
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
+            const alphaNames = resp.data.students.sort((a, b) => a.last_name.localeCompare(b.last_name));
             if(resp.data.status === 200){
                 this.setState({
                     students: alphaNames,
@@ -73,7 +73,7 @@ class Dashboard extends React.Component{
         let userFullname = this.state.fullname;
        
         const filteredStudentsByName = this.state.students.filter((student) => {
-            return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
+            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || 
             student.year.includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
@@ -93,6 +93,7 @@ class Dashboard extends React.Component{
                 return(
                     <tr key={item.id}>
                         <td>{item.fullname}</td>
+                        <td>{item.subject}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
                         <td>{item.year_level}</td>
@@ -138,8 +139,8 @@ class Dashboard extends React.Component{
                                         {userFullname}
                                     </button>
                                     <ul className="dropdown-menu">
-                                        <li><a className="dropdown-item" href="#">Acount Settings</a></li>
-                                        <li><a className="dropdown-item" href="/login" onClick={this.clearUser}>Logout</a></li>
+                                        <li><a href="#" className="dropdown-item">Acount Settings</a></li>
+                                        <li><a href="/login" className="dropdown-item" onClick={this.clearUser}>Logout</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -190,6 +191,7 @@ class Dashboard extends React.Component{
                             <thead>
                                 <tr>
                                     <th scope="col">Full Name</th>
+                                    <th scope="col">Subject</th>
                                     <th scope="col">Sem</th>
                                     <th scope="col">Year</th>
                                     <th scope="col">Year Level</th>

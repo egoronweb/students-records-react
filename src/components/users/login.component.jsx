@@ -56,14 +56,14 @@ function UserLogin(){
 
             <div className="login-content">
             <form onSubmit={loginUser} className='form' >
+            <p className="form-title">Login Form</p>
                 <div className="mb-3">
-                    <p className="form-title">Login Form</p>
-                    <label htmlFor="username" className="form-label form-lbl">Username</label>
-                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder="username@gmail.com" required/>
+                <input type="email" className="form-control input-effect" id="username" name="username" onChange={e => handle(e)} value={data.username} placeholder=" " required autoComplete="off"/>
+                    <label htmlFor="username" className="form-label form-lbl label-effect">Username</label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label form-lbl">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={data.password} placeholder="Password" required/>
+                <input type="password" className="form-control input-effect" id="password" name="password" onChange={e => handle(e)} value={data.password} placeholder=" " required autoComplete="off"/>
+                    <label htmlFor="password" className="form-label form-lbl label-effect">Password</label>
                 </div>
                 <p>Don't have an account yet? <a href="/register">Register</a></p>
                 <button type="submit" className="btn btn-primary">Login</button>

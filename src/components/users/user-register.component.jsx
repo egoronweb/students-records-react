@@ -65,22 +65,22 @@ function UserRegister(){
             </nav>
 
             <form onSubmit={saveUser} className='form' >
+            <p className="form-title">Register Form</p>
                 <div className="mb-3">
-                <p className="form-title">Register Form</p>
-                    <label htmlFor="fullname" className="form-label form-lbl">Full Name</label>
-                    <input type="text" className="form-control" id="fullname" name="fullname" onChange={e => handle(e)} value={userData.fullname} placeholder="Full Name" required/>
+                <input type="text" className="form-control input-effect" id="fullname" name="fullname" onChange={e => handle(e)} value={userData.fullname} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                    <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="username" className="form-label form-lbl">Username</label>
-                    <input type="email" className="form-control" id="username" name="username" onChange={e => handle(e)} value={userData.username} placeholder="username@gmail.com" required/>
+                <input type="email" className="form-control input-effect" id="username" name="username" onChange={e => handle(e)} value={userData.username} placeholder=" " required autoComplete="off"/>
+                    <label htmlFor="username" className="form-label form-lbl label-effect">Username</label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="password" className="form-label form-lbl">Password</label>
-                    <input type="password" className="form-control" id="password" name="password" onChange={e => handle(e)} value={userData.password} placeholder="Password" required/>
+                <input type="password" className="form-control input-effect" id="password" name="password" onChange={e => handle(e)} value={userData.password} placeholder=" " required autoComplete="off"/>
+                    <label htmlFor="password" className="form-label form-lbl label-effect">Password</label>
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="re_password" className="form-label form-lbl">Retype-Password</label>
-                    <input type="password" className="form-control" id="re_password" name="re_password" onChange={e => handle(e)} value={userData.re_password} placeholder="Retype Password" required/>
+                <input type="password" className="form-control input-effect" id="re_password" name="re_password" onChange={e => handle(e)} value={userData.re_password} placeholder=" " required autoComplete="off"/>
+                    <label htmlFor="re_password" className="form-label form-lbl label-effect">Retype-Password</label>
                 </div>
                 <p>Already have an account?<a href="/login">Login</a></p>
                 <button type="submit" className="btn btn-primary">Register</button>
