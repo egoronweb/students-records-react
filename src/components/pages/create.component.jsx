@@ -34,24 +34,16 @@ class CreateInfo extends React.Component{
     saveStudent = async (e) => {
         e.preventDefault(e);
 
-        let resp = await axios.post('https://students-records-laravel.herokuapp.com/api/dashboard/create', this.state)
-        .then(res =>{
-            console.log(res);
-            console.log(this.state);
-        })
-        .catch(err => {
-            console.log(err);
-            console.log(this.state);
-        });
-        // if(resp.data.status === 200){
-        //     swal("Created Successfully!", "Wait for a moment...", "success");
-        //     setTimeout(() => window.location.href = "/dashboard/create", 1000);
-        // }else if(resp.data.status === 401){
-        //     swal("Error", "Please fill-up again", "failed");
-        // }else{
-        //     swal("Error Occured", "Please fill-up again", "failed");
+        let resp = await axios.post('https://students-records-laravel.herokuapp.com/api/dashboard/create', this.state);
+        if(resp.data.status === 200){
+            swal("Created Successfully!", "Wait for a moment...", "success");
+            setTimeout(() => window.location.href = "/dashboard/create", 1000);
+        }else if(resp.data.status === 401){
+            swal("Error", "Please fill-up again", "failed");
+        }else{
+            swal("Error Occured", "Please fill-up again", "failed");
             
-        // }
+        }
     }
     clearUser = () => {
         localStorage.removeItem('user');
