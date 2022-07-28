@@ -138,6 +138,8 @@ class CreateInfo extends React.Component{
                         <option value="2016-2017">2016-2017</option>
                         <option value="2017-2018">2017-2018</option>
                         <option value="2018-2019">2018-2019</option>
+                        <option value="2018-2019">2019-2020</option>
+                        <option value="2018-2019">2020-2021</option>
                     </select>
                         <label htmlFor="year" className="form-label form-lbl label-effect">Year</label>
                     </div>
