@@ -109,7 +109,7 @@ class CreateInfo extends React.Component{
                     </div>
                     <div className="mb-3">
                     <select name="semester" id="semester" className="form-control input-effect" onChange = {e => this.setState({semester:e.target.value})}>
-                        <option disabled selected = "true">--select semester--</option>
+                        <option disabled selected = "true" required>--select semester--</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                     </select>
@@ -117,7 +117,7 @@ class CreateInfo extends React.Component{
                     </div>
                     <div className="mb-3">
                     <select name="year" id="year" className="form-control input-effect" onChange = {e => this.setState({year:e.target.value})}>
-                        <option disabled selected = "true">--select batch year--</option>
+                        <option disabled selected = "true" required>--select batch year--</option>
                         <option value="1999-2000">1999-2000</option>
                         <option value="2000-2001">2000-2001</option>
                         <option value="2001-2002">2001-2002</option>
@@ -143,7 +143,7 @@ class CreateInfo extends React.Component{
                     </div>
                     <div className="mb-3">
                     <select name="year_level" id="year_level" className="form-control input-effect" onChange = {e => this.setState({year_level:e.target.value})}>
-                        <option disabled selected = "true">--select year level--</option>
+                        <option disabled selected = "true" required>--select year level--</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
