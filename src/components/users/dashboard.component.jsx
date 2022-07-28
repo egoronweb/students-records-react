@@ -85,13 +85,28 @@ class Dashboard extends React.Component{
             userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
-                if(item.grade === "1.0" || item.grade <= "3.0" || item.re_exam === '1.0' || item.re_exam <= '3.0' || item.re_exam === null){
+                if(item.re_exam === null){
+                    if(item.grade === '1.0' || item.grade <= '3.0'){
+                        remarks = "Passed";
+                    }else if(item.grade === 'inc' || item.grade === 'INC' || item.grade >= '3.1'){
+                        remarks = "Failed";
+                    }else{
+                        remarks = "Dropout";
+                    }
+                }else if(item.re_exam === '1.0' || item.re_exam <= '3.0'){
                     remarks = "Passed";
-                }else if(item.grade >= '4.1' || item.re_exam === 'INC' || item.re_exam === 'inc'){
+                }else if(item.re_exam === 'inc' || item.re_exam === 'INC' || item.re_exam >= '3.1'){
                     remarks = "Failed";
                 }else{
                     remarks = "Dropout";
                 }
+                // if(item.grade === "1.0" || item.grade <= "3.0" || item.re_exam === '1.0' || item.re_exam <= '3.0'){
+                //     remarks = "Passed";
+                // }else if(item.grade >= '4.1' || item.re_exam === 'INC' || item.re_exam === 'inc'){
+                //     remarks = "Failed";
+                // }else{
+                //     remarks = "Dropout";
+                // }
                 return(
                     <tr key={item.id}>
                         <td>{item.last_name}</td>
