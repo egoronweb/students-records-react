@@ -26,7 +26,7 @@ class Dashboard extends React.Component{
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const alphaNames = resp.data.students.sort((a, b) => a.fullname.localeCompare(b.fullname));
+            const alphaNames = resp.data.students.sort((a, b) => a.last_name.localeCompare(b.last_name));
             if(resp.data.status === 200){
                 this.setState({
                     students: alphaNames,
@@ -73,7 +73,7 @@ class Dashboard extends React.Component{
         let userFullname = this.state.fullname;
        
         const filteredStudentsByName = this.state.students.filter((student) => {
-            return student.fullname.toLocaleLowerCase().includes(this.state.nameSearchField) || 
+            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || 
             student.year.includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
@@ -92,7 +92,9 @@ class Dashboard extends React.Component{
                 }
                 return(
                     <tr key={item.id}>
-                        <td>{item.fullname}</td>
+                        <td>{item.last_name}</td>
+                        <td>{item.first_name}</td>
+                        <td>{item.middle_name}</td>
                         <td>{item.subject}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
@@ -187,24 +189,28 @@ class Dashboard extends React.Component{
                             <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
                         </div> */}
-                        <table className="table home-table home-table-width table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Subject</th>
-                                    <th scope="col">Sem</th>
-                                    <th scope="col">Year</th>
-                                    <th scope="col">Year Level</th>
-                                    <th scope="col">Final Grade</th>
-                                    <th scope="col">Remarks</th>
-                                    <th scope="col">Edit</th>
-                                    <th scope='col'>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {userTable}
-                            </tbody>
-                        </table>
+                        <div className='table-responsive table-bordered'>
+                            <table className="table home-table home-table-width table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Middle Name</th>
+                                        <th scope="col">Subject</th>
+                                        <th scope="col">Semester</th>
+                                        <th scope="col">Batch Year</th>
+                                        <th scope="col">Year Level</th>
+                                        <th scope="col">Final Grade</th>
+                                        <th scope="col">Remarks</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope='col'>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {userTable}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 

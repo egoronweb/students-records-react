@@ -8,7 +8,9 @@ class CreateInfo extends React.Component{
         super();
 
         this.state = {
-            fullname: '',
+            first_name: '',
+            middle_name: '',
+            last_name: '',
             subject: '',
             semester: '',
             year: '',
@@ -84,14 +86,22 @@ class CreateInfo extends React.Component{
                     </div>
                 </nav>
     
-                <form onSubmit={this.saveStudent} className='form' >
+                <form onSubmit={this.saveStudent} className='form create-form' >
                     <div className="btn-back-container">
                     <a href="/dashboard" className="btn btn-primary btn-back"><span className="material-symbols-outlined">undo</span>Back</a>
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" onChange = {e => this.setState({fullname:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" onChange = {e => this.setState({firt_name:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="first_name" className="form-label form-lbl label-effect">First Name</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="middle_name" name="middle_name" onChange = {e => this.setState({middle_name:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="middle_name" className="form-label form-lbl label-effect">Middle Name</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" onChange = {e => this.setState({last_name:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" onChange = {e => this.setState({subject:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="on"/>

@@ -8,7 +8,9 @@ class EditInfo extends React.Component{
         super(props);
 
         this.state = {
-            fullname: '',
+            first_name: '',
+            middle_name: '',
+            last_name: '',
             subject: '',
             semester: '',
             year: '',
@@ -29,7 +31,9 @@ class EditInfo extends React.Component{
         }else{
             if(resp.data.status === 200){
                 this.setState({
-                      fullname: resp.data.student.fullname,
+                      first_name: resp.data.student.first_name,
+                      middle_name: resp.data.student.middle_name,
+                      last_name: resp.data.student.last_name,
                       subject: resp.data.student.subject,
                       semester: resp.data.student.semester,
                       year: resp.data.student.year,
@@ -51,7 +55,9 @@ class EditInfo extends React.Component{
                 swal("Information Updated Successfully!","Redirecting...", "success");
                 setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
-                        fullname: '',
+                        first_name: '',
+                        middle_name: '',
+                        last_name: '',
                         subject: '',
                         semester: '',
                         year: '',
@@ -83,7 +89,7 @@ class EditInfo extends React.Component{
                                 <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/dashboard/create">Create</a>
+                                <a className="nav-link" href="/dashboard/create">Add Student</a>
                             </li>
                             <li className="nav-item nav-item-float-right">
                                 <div className="dropdown">
@@ -102,14 +108,22 @@ class EditInfo extends React.Component{
             </nav>
 
                 <div className="content">
-                <form onSubmit={this.updateStudent} className='form' >
+                <form onSubmit={this.updateStudent} className='form update-form' >
                     <div className="btn-back-container">
                     <a href="/dashboard" className="btn btn-primary btn-back"><span className="material-symbols-outlined">undo</span>Back</a>
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="fullname" name="fullname" value={this.state.fullname} onChange = {e => this.setState({fullname:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="fullname" className="form-label form-lbl label-effect">Full Name</label>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" value={this.state.first_name} onChange = {e => this.setState({first_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="first_name" className="form-label form-lbl label-effect">Full Name</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="middle_name" name="middle_name" value={this.state.middle_name} onChange = {e => this.setState({middle_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="middle_name" className="form-label form-lbl label-effect">Full Name</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" value={this.state.last_name} onChange = {e => this.setState({last_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="last_name" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
                     <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" value={this.state.subject} onChange = {e => this.setState({subject:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
@@ -169,7 +183,7 @@ class EditInfo extends React.Component{
                 <footer className='footer-bar'>
                    <ul className='footer-menu-texts'>
                         <li><a href="/dashboard">Home</a></li>
-                        <li><a href="/dashboard/create">Create</a></li>
+                        <li><a href="/dashboard/create">Add Student</a></li>
                         <li><a href="/login" onClick={this.clearUser}>Logout</a></li>
                    </ul>
                    <div className='footer-line'></div>
