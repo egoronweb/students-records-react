@@ -116,8 +116,8 @@ class Dashboard extends React.Component{
                         <td>{item.descriptive_title}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
-                        <td style={item.grade === 'inc' || item.grade === 'INC'? {color: 'yellow'} : {color: 'black'}}>{item.grade.toLocaleUpperCase()}</td>
-                        <td style={item.re_exam === 'inc' || item.re_exam === 'INC'? {color: 'yellow'} : {color: 'black'}}>{item.re_exam.toLocaleUpperCase()}</td>
+                        <td style={item.grade === 'inc' || item.grade === 'INC'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-grade">{item.grade}</td>
+                        <td style={item.re_exam === 'inc' || item.re_exam === 'INC'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-re_exam">{item.re_exam}</td>
                         <td style={remarks === "Passed"? {color:'black'} : {color:'red'}}>{remarks}</td>
                             <td>
                             <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
