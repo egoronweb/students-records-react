@@ -164,11 +164,11 @@ class EditInfo extends React.Component{
                         <label htmlFor="year" className="form-label form-lbl label-effect">School Year</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value})} value={this.state.grade} required autoComplete="off"/>
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value.toLocaleUpperCase()})} value={this.state.grade} required autoComplete="off"/>
                         <label htmlFor="grade" className="form-label form-lbl label-effect">Grade</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value})} value={this.state.re_exam} autoComplete="off"/>
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value.toLocaleUpperCase()})} value={this.state.re_exam} autoComplete="off"/>
                         <label htmlFor="re_exam" className="form-label form-lbl label-effect">Final Remarks</label>
                     </div>
                     <button type="submit" className="btn btn-warning btn-update">Update</button>

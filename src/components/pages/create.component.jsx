@@ -148,11 +148,11 @@ class CreateInfo extends React.Component{
                         <label htmlFor="year" className="form-label form-lbl label-effect">Year</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value})} placeholder=" " required autoComplete="off"/>
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off"/>
                         <label htmlFor="grade" className="form-label form-lbl label-effect">Grade</label>
                     </div>
                     <div className="mb-3">  
-                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value})} placeholder=" " autoComplete="off"/>
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value.toLocaleUpperCase()})} placeholder=" " autoComplete="off"/>
                         <label htmlFor="re_exam" className="form-label form-lbl label-effect">Re-Exam</label>
                     </div>
                     <button type="submit" className="btn btn-primary btn-save">Save</button>
