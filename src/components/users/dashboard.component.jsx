@@ -109,14 +109,15 @@ class Dashboard extends React.Component{
                 // }
                 return(
                     <tr key={item.id}>
+                        <td>{item.id}</td>
                         <td>{item.last_name}</td>
                         <td>{item.first_name}</td>
                         <td>{item.subject_code}</td>
                         <td>{item.descriptive_title}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
-                        <td>{item.grade}</td>
-                        <td>{item.re_exam}</td>
+                        <td style={item.grade === 'inc' || item.grade === 'INC'? {color: 'yellow'} : {color: 'black'}}>{item.grade}</td>
+                        <td style={item.re_exam === 'inc' || item.re_exam === 'INC'? {color: 'yellow'} : {color: 'black'}}>{item.re_exam}</td>
                         <td style={remarks === "Passed"? {color:'black'} : {color:'red'}}>{remarks}</td>
                             <td>
                             <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
@@ -210,6 +211,7 @@ class Dashboard extends React.Component{
                             <table className="table home-table home-table-width table-striped table-hover">
                                 <thead>
                                     <tr>
+                                        <th scope="col">No.</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Subject Code</th>
