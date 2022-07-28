@@ -426,6 +426,22 @@ a{
     }
 }
 
+@media (max-width: 800px){
+    .wrapper{
+
+        .content{
+
+            .update-form{
+                width: 80%;
+
+            }
+        }
+        
+        .create-form{
+            width: 80%;
+        }
+    }
+}
 
 @media (max-width: 600px){
     .error-page{
