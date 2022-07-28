@@ -114,19 +114,19 @@ class EditInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" value={this.state.first_name} onChange = {e => this.setState({first_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" value={this.state.first_name} onChange = {e => this.setState({first_name:e.target.value.charAt(0).toUpperCase()})} required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" value={this.state.last_name} onChange = {e => this.setState({last_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" value={this.state.last_name} onChange = {e => this.setState({last_name:e.target.value.charAt(0).toUpperCase()})} required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="subject_code" name="subject_code" value={this.state.subject_code} onChange = {e => this.setState({subject_code:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="subject_code" name="subject_code" value={this.state.subject_code} onChange = {e => this.setState({subject_code:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
                         <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" value={this.state.descriptive_title} onChange = {e => this.setState({descriptive_title:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" value={this.state.descriptive_title} onChange = {e => this.setState({descriptive_title:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
                         <label htmlFor="descriptive_title" className="form-label form-lbl label-effect">Descriptive Title</label>
                     </div>
                     <div className="mb-3">
