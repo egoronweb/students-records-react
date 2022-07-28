@@ -34,6 +34,7 @@ class EditInfo extends React.Component{
                       first_name: resp.data.student.first_name,
                       last_name: resp.data.student.last_name,
                       subject_code: resp.data.student.subject_code,
+                      descriptive_title: resp.data.student.descriptive_title,
                       semester: resp.data.student.semester,
                       year: resp.data.student.year,
                       grade: resp.data.student.grade,
@@ -163,8 +164,12 @@ class EditInfo extends React.Component{
                         <label htmlFor="year" className="form-label form-lbl label-effect">School Year</label>
                     </div>
                     <div className="mb-3">
-                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} value={this.state.final_grade} required autoComplete="off"/>
-                        <label htmlFor="final_grade" className="form-label form-lbl label-effect">Final Grade</label>
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value})} value={this.state.grade} required autoComplete="off"/>
+                        <label htmlFor="grade" className="form-label form-lbl label-effect">Grade</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value})} value={this.state.re_exam} autoComplete="off"/>
+                        <label htmlFor="re_exam" className="form-label form-lbl label-effect">Final Remarks</label>
                     </div>
                     <button type="submit" className="btn btn-warning btn-update">Update</button>
                 </form>
