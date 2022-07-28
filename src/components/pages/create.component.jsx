@@ -9,13 +9,13 @@ class CreateInfo extends React.Component{
 
         this.state = {
             first_name: '',
-            middle_name: '',
             last_name: '',
-            subject: '',
+            subject_code: '',
+            descriptive_title: '',
             semester: '',
             year: '',
-            year_level: '',
-            final_grade: '',
+            grade: '',
+            re_exam: '',
             userFullname: '',
         }
     }
@@ -68,7 +68,7 @@ class CreateInfo extends React.Component{
                                     <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/dashboard/create">Create</a>
+                                    <a className="nav-link" href="/dashboard/create">Add Student</a>
                                 </li>
                                 <li className="nav-item nav-item-float-right">
                                     <div className="dropdown">
@@ -96,16 +96,16 @@ class CreateInfo extends React.Component{
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">First Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="middle_name" name="middle_name" onChange = {e => this.setState({middle_name:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="middle_name" className="form-label form-lbl label-effect">Middle Name</label>
-                    </div>
-                    <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" onChange = {e => this.setState({last_name:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" onChange = {e => this.setState({subject:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="on"/>
-                        <label htmlFor="subject" className="form-label form-lbl label-effect">Subject</label>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="subject_code" name="subject_code" onChange = {e => this.setState({subject_code:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="on"/>
+                        <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" onChange = {e => this.setState({descriptive_title:e.target.value})} placeholder=" " required autoComplete="off" autoCapitalize="on"/>
+                        <label htmlFor="descriptive_title" className="form-label form-lbl label-effect">Descriptive Title</label>
                     </div>
                     <div className="mb-3">
                     <select name="semester" id="semester" className="form-control input-effect" onChange = {e => this.setState({semester:e.target.value})}>
@@ -144,25 +144,19 @@ class CreateInfo extends React.Component{
                         <label htmlFor="year" className="form-label form-lbl label-effect">Year</label>
                     </div>
                     <div className="mb-3">
-                    <select name="year_level" id="year_level" className="form-control input-effect" onChange = {e => this.setState({year_level:e.target.value})}>
-                        <option disabled selected = "true" required>--select year level--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                        <label htmlFor="year_level" className="form-label form-lbl label-effect">Year Level</label>
+                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="grade" name="grade" onChange = {e => this.setState({grade:e.target.value})} placeholder=" " required autoComplete="off"/>
+                        <label htmlFor="grade" className="form-label form-lbl label-effect">Grade</label>
                     </div>
                     <div className="mb-3">
-                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} placeholder=" " required autoComplete="off"/>
-                        <label htmlFor="final_grade" className="form-label form-lbl label-effect">Final Grade</label>
+                    <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="re_exam" name="re_exam" onChange = {e => this.setState({re_exam:e.target.value})} placeholder=" " autoComplete="off"/>
+                        <label htmlFor="re_exam" className="form-label form-lbl label-effect">Re-Exam</label>
                     </div>
                     <button type="submit" className="btn btn-primary btn-save">Save</button>
                 </form>
                 <footer className='footer-bar'>
                        <ul className='footer-menu-texts'>
                             <li><a href="/dashboard">Home</a></li>
-                            <li><a href="/dashboard/create">Create</a></li>
+                            <li><a href="/dashboard/create">Add Student</a></li>
                             <li><a href="/login" onClick={this.clearUser}>Logout</a></li>
                        </ul>
                        <div className='footer-line'></div>

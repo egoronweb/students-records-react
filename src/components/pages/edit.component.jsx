@@ -9,13 +9,13 @@ class EditInfo extends React.Component{
 
         this.state = {
             first_name: '',
-            middle_name: '',
             last_name: '',
-            subject: '',
+            subject_code: '',
+            descriptive_title: '',
             semester: '',
             year: '',
-            year_level: '',
-            final_grade: '',
+            grade: '',
+            re_exam: '',
             userFullname: '',
         }
 
@@ -32,13 +32,12 @@ class EditInfo extends React.Component{
             if(resp.data.status === 200){
                 this.setState({
                       first_name: resp.data.student.first_name,
-                      middle_name: resp.data.student.middle_name,
                       last_name: resp.data.student.last_name,
-                      subject: resp.data.student.subject,
+                      subject_code: resp.data.student.subject_code,
                       semester: resp.data.student.semester,
                       year: resp.data.student.year,
-                      year_level: resp.data.student.year_level,
-                      final_grade: resp.data.student.final_grade,
+                      grade: resp.data.student.grade,
+                      re_exam: resp.data.student.re_exam,
                       userFullname: userInfo.user.fullname,
                   });
               }
@@ -56,13 +55,13 @@ class EditInfo extends React.Component{
                 setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
                         first_name: '',
-                        middle_name: '',
                         last_name: '',
-                        subject: '',
+                        subject_code: '',
+                        descriptive_title: '',
                         semester: '',
                         year: '',
-                        year_level: '',
-                        final_grade: '',
+                        grade: '',
+                        re_exam: '',
                     });
                 }
     }
@@ -118,16 +117,16 @@ class EditInfo extends React.Component{
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="middle_name" name="middle_name" value={this.state.middle_name} onChange = {e => this.setState({middle_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="middle_name" className="form-label form-lbl label-effect">Full Name</label>
-                    </div>
-                    <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" value={this.state.last_name} onChange = {e => this.setState({last_name:e.target.value})} required autoComplete="off" autoCapitalize="words"/>
-                        <label htmlFor="last_name" className="form-label form-lbl label-effect">Full Name</label>
+                        <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="subject" name="subject" value={this.state.subject} onChange = {e => this.setState({subject:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
-                        <label htmlFor="subject" className="form-label form-lbl label-effect">Subject</label>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="subject_code" name="subject_code" value={this.state.subject_code} onChange = {e => this.setState({subject_code:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
+                        <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
+                    </div>
+                    <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" value={this.state.descriptive_title} onChange = {e => this.setState({descriptive_title:e.target.value})} required autoComplete="off" autoCapitalize="on"/>
+                        <label htmlFor="descriptive_title" className="form-label form-lbl label-effect">Descriptive Title</label>
                     </div>
                     <div className="mb-3">
                     <select name="semester" id="semester" className="form-control input-effect" onChange = {e => this.setState({semester:e.target.value})} value={this.state.semester}>
@@ -139,7 +138,7 @@ class EditInfo extends React.Component{
                     </div>
                     <div className="mb-3">
                     <select name="year" id="year" className="form-control input-effect" onChange = {e => this.setState({year:e.target.value})} value={this.state.year}>
-                        <option disabled selected = "true" required>--select batch year--</option>
+                        <option disabled selected = "true" required>--select school year--</option>
                         <option value="1999-2000">1999-2000</option>
                         <option value="2000-2001">2000-2001</option>
                         <option value="2001-2002">2001-2002</option>
@@ -161,17 +160,7 @@ class EditInfo extends React.Component{
                         <option value="2017-2018">2017-2018</option>
                         <option value="2018-2019">2018-2019</option>
                     </select>
-                        <label htmlFor="year" className="form-label form-lbl label-effect">Year</label>
-                    </div>
-                    <div className="mb-3">
-                    <select name="year_level" id="year_level" className="form-control input-effect" onChange = {e => this.setState({year_level:e.target.value})} value={this.state.year_level}>
-                        <option disabled selected = "true" required>--select year level--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                        <label htmlFor="year_level" className="form-label form-lbl label-effect">Year Level</label>
+                        <label htmlFor="year" className="form-label form-lbl label-effect">School Year</label>
                     </div>
                     <div className="mb-3">
                     <input type="number" step="0.01" min="1.0" max="5.0" className="form-control input-effect" id="final_grade" name="final_grade" onChange = {e => this.setState({final_grade:e.target.value})} value={this.state.final_grade} required autoComplete="off"/>

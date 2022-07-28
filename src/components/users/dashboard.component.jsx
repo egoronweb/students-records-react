@@ -73,7 +73,7 @@ class Dashboard extends React.Component{
         let userFullname = this.state.fullname;
        
         const filteredStudentsByName = this.state.students.filter((student) => {
-            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) && student.first_name.include(this.state.nameSearchField)|| 
+            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || student.first_name.include(this.state.nameSearchField)|| 
             student.year.includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
@@ -85,22 +85,24 @@ class Dashboard extends React.Component{
             userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
-                if(item.final_grade === "1.0" || item.final_grade <= "3.0"){
+                if(item.grade === "1.0" || item.grade <= "3.0" || item.re_exam === '1.0' || item.re_exam <= '3.0' || item.re_exam === null){
                     remarks = "Passed";
-                }else{
+                }else if(item.grade >= '4.1' || item.re_exam === 'INC' || item.re_exam === 'inc'){
                     remarks = "Failed";
+                }else{
+                    remarks = "Dropout";
                 }
                 return(
                     <tr key={item.id}>
                         <td>{item.last_name}</td>
                         <td>{item.first_name}</td>
-                        <td>{item.middle_name}</td>
-                        <td>{item.subject}</td>
+                        <td>{item.subject_code}</td>
+                        <td>{item.descriptive_title}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
-                        <td>{item.year_level}</td>
-                        <td>{item.final_grade}</td>
-                        <td style={item.final_grade === "1.0" || item.final_grade <= "3.0" ? {color:'black'}:{color:'red'}}>{remarks}</td>
+                        <td>{item.grade}</td>
+                        <td>{item.re_exam}</td>
+                        <td style={remarks === "Passed"? {color:'black'} : {color:'red'}}>{remarks}</td>
                             <td>
                             <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
                             </td>
@@ -133,7 +135,7 @@ class Dashboard extends React.Component{
                                 <a className="nav-link active" aria-current="page" href="/dashboard">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/dashboard/create">Create</a>
+                                <a className="nav-link" href="/dashboard/create">Add Student</a>
                             </li>
                             <li className="nav-item nav-item-float-right">
                                 <div className="dropdown">
@@ -195,13 +197,13 @@ class Dashboard extends React.Component{
                                     <tr>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">First Name</th>
-                                        <th scope="col">Middle Name</th>
-                                        <th scope="col">Subject</th>
+                                        <th scope="col">Subject Code</th>
+                                        <th scope="col">Descriptive Title</th>
                                         <th scope="col">Semester</th>
                                         <th scope="col">Batch Year</th>
-                                        <th scope="col">Year Level</th>
-                                        <th scope="col">Final Grade</th>
-                                        <th scope="col">Remarks</th>
+                                        <th scope="col">Grade</th>
+                                        <th scope="col">Re-Exam</th>
+                                        <th scope="col">Final Remarks</th>
                                         <th scope="col">Edit</th>
                                         <th scope='col'>Delete</th>
                                     </tr>
@@ -219,7 +221,7 @@ class Dashboard extends React.Component{
                 <footer className='footer-bar'>
                    <ul className='footer-menu-texts'>
                         <li><a href="/dashboard">Home</a></li>
-                        <li><a href="/dashboard/create">Create</a></li>
+                        <li><a href="/dashboard/create">Add Student</a></li>
                         <li><a href="/login" onClick={this.clearUser}>Logout</a></li>
                    </ul>
                    <div className='footer-line'></div>
