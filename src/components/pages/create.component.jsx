@@ -51,8 +51,12 @@ class CreateInfo extends React.Component{
         localStorage.removeItem('user');
     }
 
+    capitalized = (str) => {
+        return str.charAt(0).toLocaleUpperCase() + str.slice(1);
+    }
    
     render() { 
+        
         let userFullname = this.state.userFullname;
         return(
             <div className="wrapper">
@@ -92,11 +96,11 @@ class CreateInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" onChange = {e => this.setState({first_name:e.target.value.str.charAt(0).toUpperCase() + str.slice(1)})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" onChange = {e => this.setState({first_name:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">First Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" onChange = {e => this.setState({last_name:e.target.value.str.charAt(0).toUpperCase() + str.slice(1)})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="last_name" name="last_name" onChange = {e => this.setState({last_name:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
