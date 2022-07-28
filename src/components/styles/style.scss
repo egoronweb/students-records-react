@@ -240,6 +240,25 @@ a{
         .form{
             height: 380px;
         }
+
+        .update-form{
+            width: 750px;
+            height: auto;
+            margin-bottom: 150px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+    
+            input{
+                width: 320px;
+            }
+            select{
+                width: 320px;
+            }
+            .btn-update{
+                height:40px;
+            }
+        }
         .home-title{
             padding: 50px 0;
         }
@@ -345,7 +364,7 @@ a{
 
     }
 
-    .create-form, .update-form{
+    .create-form{
         width: 750px;
         height: auto;
         margin-bottom: 150px;
@@ -457,19 +476,19 @@ a{
                 margin-bottom: 0;
                 height: 700px;
                 input{
-                    width: 300px;
+                    width: 250px;
                 }
                 select{
-                    width: 300px;
+                    width: 250px;
                 }
             }
         }
         .create-form{
             input{
-                width: 300px;
+                width: 280px;
             }
             select{
-                width: 300px;
+                width: 280px;
             }
         }
 
@@ -543,8 +562,9 @@ a{
             }
         }
         .form{
-            width: 330px;
+            width: 300px;
         }
+        
     }
 }
 
