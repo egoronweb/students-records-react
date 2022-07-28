@@ -172,7 +172,7 @@ a{
         }
         .table-bordered{
             height: auto;
-            max-height: 250px;
+            max-height: 500px;
             width: 100%;
             margin: 0 auto;
             background-color: white;
@@ -237,6 +237,9 @@ a{
         justify-content: space-evenly;
         height: auto;
 
+        .form{
+            height: 380px;
+        }
         .home-title{
             padding: 50px 0;
         }
@@ -281,13 +284,6 @@ a{
                     border: 2px solid white;
                     font-weight: 600;
                 }
-            }
-        }
-        .form{
-            height: 480px;
-
-            .btn-update{
-
             }
         }
         .homepage-right{
@@ -351,6 +347,7 @@ a{
 
     .create-form, .update-form{
         width: 750px;
+        height: auto;
         margin-bottom: 150px;
         display: flex;
         flex-wrap: wrap;
@@ -361,6 +358,9 @@ a{
         }
         select{
             width: 200px;
+        }
+        .btn-update{
+            height:40px;
         }
     }
     .footer-bar{
@@ -436,8 +436,19 @@ a{
     }
     .wrapper{
 
-        .create-form, .update-form{
-    
+        .content{
+            .update-form{
+                margin-bottom: 0;
+                height: 700px;
+                input{
+                    width: 300px;
+                }
+                select{
+                    width: 300px;
+                }
+            }
+        }
+        .create-form{
             input{
                 width: 300px;
             }
