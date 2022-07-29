@@ -76,19 +76,19 @@ function HomePage(){
                 <div className="homepage-right">
                 <form onSubmit={onSubmit} className="form">
                     <div className="mb-3">
-                    <input type='text' name='from_name' id="from_name" className="form-control input-effect" value={toSend.from_name} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                    <input type='text' name='from_name' id="from_name" className="form-control input-effect" value={toSend.from_name} onChange={handleChange} autoComplete="off" placeholder=" " required/>
                         <label htmlFor="from_name" className="form-label form-lbl label-effect">Sender Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type='text' name='to_name' id="to_name" className="form-control input-effect" value={toSend.to_name} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                    <input type='text' name='to_name' id="to_name" className="form-control input-effect" value={toSend.to_name} onChange={handleChange} autoComplete="off" placeholder=" " required/>
                         <label htmlFor="to_name" className="form-label form-lbl label-effect">Receiver Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type='email' name='sender_email' id="sender_email" className="form-control input-effect" value={toSend.sender_email} onChange={handleChange} autoComplete="off" placeholder=" "/>
+                    <input type='email' name='sender_email' id="sender_email" className="form-control input-effect" value={toSend.sender_email} onChange={handleChange} autoComplete="off" placeholder=" " required/>
                         <label htmlFor="sender_email" className="form-label form-lbl label-effect">Sender Email</label>
                     </div>
                     <div className="mb-3">
-                    <textarea name="message" id="message" className="form-control input-effect" value={toSend.message} onChange={handleChange} autoComplete="off" placeholder=" "></textarea>
+                    <textarea name="message" id="message" className="form-control input-effect" value={toSend.message} onChange={handleChange} autoComplete="off" placeholder=" " required></textarea>
                         <label htmlFor="message" className="form-label form-lbl label-effect">Message</label>
                     </div>
                     <button type="submit" className="btn btn-primary">Send Message</button>
