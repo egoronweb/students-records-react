@@ -5,9 +5,9 @@ import UserLogin from './components/users/login.component';
 import Dashboard from './components/users/dashboard.component';
 import EditInfo from './components/pages/edit.component';
 import Landing from './components/pages/error-landing.component';
+import Printing from './components/print/print-function.component';
 import { BrowserRouter as Router,Switch, Route } from 'react-router-dom';
 import './App.css';
-
 
 
 function App() {
@@ -43,6 +43,7 @@ function App() {
             <Route exact path= "/dashboard" component={Dashboard} />
             <Route exact path = "/dashboard/create" component={CreateInfo} />
             <Route exact path = "/dashboard/edit/:id" component={EditInfo} />
+            <Route exact path = "/dashboard/print" component={Printing} />
           {/* </ProtectedRoutes> */}
         </Switch>
       </Router>

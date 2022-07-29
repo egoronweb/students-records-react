@@ -156,8 +156,8 @@ a{
 
         .main-content{
 
-            .create{
-                margin: 20px 50px;
+            .create, .print{
+                margin: 10px;
            }
            .search{
             height: 40px;
@@ -416,6 +416,39 @@ a{
 
 }
 
+.print-wrapper{
+    .print-title{
+        text-align: center;
+
+        h1{
+            margin: 10px 0;
+        }
+    }
+    .btn-back{
+        position: relative;
+        top: 10px;
+        left: 30px;
+    }
+    .print-function-btn{
+        position: relative;
+        top: 20px;
+        left: 50px;
+        margin-bottom: 20px;
+    }
+    .table {
+        width: 90%;
+        margin: 0 auto;
+        font-size: 12px;
+        td, th{
+            border: 1px solid black;
+        }
+
+        .loading-indicator{
+            text-align: center;
+        }
+    }
+}
+
 @media (max-width: 991px){
     .error-page{
 
@@ -463,6 +496,7 @@ a{
 }
 
 @media (max-width: 600px){
+    
     .error-page{
 
         .error-image{
@@ -497,10 +531,10 @@ a{
             .main-content{
 
                 .search{
-                    width: 180px;
+                    width: 250px;
                     font-size: 11px;
                 }
-                .create{
+                .create, .print{
                     width: 120px;
                     height: 40px;
                     font-size: 12px;
@@ -565,6 +599,20 @@ a{
             width: 300px;
         }
         
+    }
+
+    .print-wrapper{
+        .print-function-btn{
+            position: relative;
+            top: 10px;
+            left: 20px;
+            margin-bottom: 20px;
+        }
+        .btn-back{
+            position: relative;
+            top: 0;
+            left: 5px;
+        }
     }
 }
 

@@ -74,7 +74,7 @@ class Dashboard extends React.Component{
        
         const filteredStudentsByName = this.state.students.filter((student) => {
             return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || 
-            student.year.includes(this.state.nameSearchField);
+            student.year.includes(this.state.nameSearchField) || student.descriptive_title.toLocaleLowerCase().includes(this.state.nameSearchField) || student.first_name.toLocaleLowerCase().includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
         //     return student.year.includes(this.state.yearSearchField);
@@ -109,15 +109,14 @@ class Dashboard extends React.Component{
                 // }
                 return(
                     <tr key={item.id}>
-                        <td>{item.id}</td>
                         <td>{item.last_name}</td>
                         <td>{item.first_name}</td>
                         <td>{item.subject_code}</td>
                         <td>{item.descriptive_title}</td>
                         <td>{item.semester}</td>
                         <td>{item.year}</td>
-                        <td style={item.grade === 'inc' || item.grade === 'INC'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-grade">{item.grade}</td>
-                        <td style={item.re_exam === 'inc' || item.re_exam === 'INC'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-re_exam">{item.re_exam}</td>
+                        <td style={item.grade === 'INC' || item.grade === 'DROPOUT'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-grade">{item.grade}</td>
+                        <td style={item.re_exam === 'INC'? {backgroundColor: 'yellow'} : {color: 'black'}} className="table-re_exam">{item.re_exam}</td>
                         <td style={remarks === "Passed"? {color:'black'} : {color:'red'}}>{remarks}</td>
                             <td>
                             <a href={`/dashboard/edit/${item.id}`}><button className="btn btn-success btn-sm btn-edit"><span className="material-symbols-outlined">edit</span></button></a>
@@ -203,6 +202,7 @@ class Dashboard extends React.Component{
 
                             }}/>
                         <a href="/dashboard/create"><button type='button' className='btn btn-primary create'><span className="material-symbols-outlined">add</span>Add Student</button></a>
+                        <a href="/dashboard/print"><button type='button' className='btn btn-primary print'><span class="material-symbols-outlined">file_open</span>Open to print</button></a>
                         {/* <div className='btn-sems-container'>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
                             <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
@@ -211,7 +211,6 @@ class Dashboard extends React.Component{
                             <table className="table home-table home-table-width table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No.</th>
                                         <th scope="col">Last Name</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Subject Code</th>
