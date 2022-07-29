@@ -11,7 +11,7 @@ class Printing extends React.PureComponent {
         <ReactToPrint content={() => this.componentRef}>
           <PrintContextConsumer>
             {({ handlePrint }) => (
-              <button type='button' className='btn btn-primary print-function-btn' onClick={handlePrint}><span className="material-symbols-outlined">print</span>Print Document</button>
+              <button type='button' className='btn btn-primary print-function-btn' onClick={handlePrint}><span className="material-symbols-outlined">print</span>Print or Download Document</button>
             )}
           </PrintContextConsumer>
         </ReactToPrint>
