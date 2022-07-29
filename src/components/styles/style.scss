@@ -162,10 +162,10 @@ a{
            .search{
             height: 40px;
             border-radius: 20px;
-            border: none;
+            border: 1px solid white;
             text-align: center;
             padding: 5px 10px;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.825);
             font-weight: 600;
             color: white;
            }
