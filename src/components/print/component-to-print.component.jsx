@@ -2,31 +2,35 @@
 import React from "react";
 import axios from "axios";
 import '../styles/style.scss';
+
 class ComponentToPrint extends React.PureComponent {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
-            students: [],
+            student: [],
             loading: true,
         }
     }
 
     async componentDidMount(){
-        const resp = await axios.get('https://students-records-laravel.herokuapp.com/api/dashboard');
+        // let student_id = this.props.match.params.id;
+       let last_name = window.location.pathname.split("/").pop();
+        const resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/print/${last_name}`);
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const alphaNames = resp.data.students.sort((a, b) => a.last_name.localeCompare(b.last_name));
+            const sortYear = resp.data.student.sort((a, b) => a.year.localeCompare(b.year));
             if(resp.data.status === 200){
                 this.setState({
-                    students: alphaNames,
+                    student: sortYear,
                     loading: false,
                 });
+            }
         }
-        }
+        console.log(resp.data.response);
     }
     render() {
         let userTable = "";
@@ -34,7 +38,7 @@ class ComponentToPrint extends React.PureComponent {
         if(this.state.loading === true){
             userTable = <tr><td colSpan="5" className='loading-indicator'><h3>Loading...</h3></td></tr>;
         }else{
-        userTable = this.state.students.map((item) => {
+        userTable = this.state.student.filter((item) => {
             if(item.re_exam === null){
                 if(item.grade === '1.0' || item.grade <= '3.0'){
                     remarks = "Passed";
@@ -50,13 +54,6 @@ class ComponentToPrint extends React.PureComponent {
             }else{
                 remarks = "Dropout";
             }
-            // if(item.grade === "1.0" || item.grade <= "3.0" || item.re_exam === '1.0' || item.re_exam <= '3.0'){
-            //     remarks = "Passed";
-            // }else if(item.grade >= '4.1' || item.re_exam === 'INC' || item.re_exam === 'inc'){
-            //     remarks = "Failed";
-            // }else{
-            //     remarks = "Dropout";
-            // }
             return(
                 <tr key={item.id}>
                     <td>{item.last_name}</td>

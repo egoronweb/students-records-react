@@ -81,10 +81,12 @@ class Dashboard extends React.Component{
         // });
         let userTable = "";
         let remarks = "";
+        let getStudent = "";
         if(this.state.loading === true){
             userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
+                getStudent = item.last_name;
                 if(item.re_exam === null){
                     if(item.grade === '1.0' || item.grade <= '3.0'){
                         remarks = "Passed";
@@ -202,11 +204,7 @@ class Dashboard extends React.Component{
 
                             }}/>
                         <a href="/dashboard/create"><button type='button' className='btn btn-primary create'><span className="material-symbols-outlined">add</span>Add Student</button></a>
-                        <a href="/dashboard/print"><button type='button' className='btn btn-primary print'><span class="material-symbols-outlined">file_open</span>Open to print</button></a>
-                        {/* <div className='btn-sems-container'>
-                            <button type='button' className='btn btn-warning btn-sems btn-sem-1'>Sem 1</button>
-                            <button type='button' className='btn btn-warning btn-sems btn-sem-2'>Sem 2</button>
-                        </div> */}
+                        <a href={`/dashboard/print/${getStudent}`}><button type='button' className='btn btn-primary print'><span class="material-symbols-outlined">file_open</span>Open to print</button></a>
                         <div className='table-responsive table-bordered'>
                             <table className="table home-table home-table-width table-striped table-hover">
                                 <thead>
