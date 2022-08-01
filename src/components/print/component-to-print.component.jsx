@@ -57,7 +57,6 @@ class ComponentToPrint extends React.PureComponent {
             }
             return(
                 <tr key={item.id}>
-                    <td>{item.student_id}</td>
                     <td>{item.last_name}</td>
                     <td>{item.first_name}</td>
                     <td>{item.subject_code}</td>
@@ -79,7 +78,6 @@ class ComponentToPrint extends React.PureComponent {
             <table className="table home-table home-table-width">
                     <thead>
                         <tr>
-                            <th scope="col">Student ID</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Subject Code</th>

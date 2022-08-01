@@ -8,7 +8,6 @@ class CreateInfo extends React.Component{
         super();
 
         this.state = {
-            student_id: '',
             first_name: '',
             last_name: '',
             subject_code: '',
@@ -97,10 +96,6 @@ class CreateInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="9" className="form-control input-effect" id="student_id" name="student_id" onChange = {e => this.setState({student_id:e.target.value})} placeholder=" " required autoComplete="off"/>
-                        <label htmlFor="student_id" className="form-label form-lbl label-effect">Student ID</label>
-                    </div>
-                    <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" onChange = {e => this.setState({first_name:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">First Name</label>
                     </div>
@@ -113,7 +108,7 @@ class CreateInfo extends React.Component{
                         <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect descriptive_title" id="descriptive_title" name="descriptive_title" onChange = {e => this.setState({descriptive_title:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off"/>
+                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" onChange = {e => this.setState({descriptive_title:e.target.value.toLocaleUpperCase()})} placeholder=" " required autoComplete="off"/>
                         <label htmlFor="descriptive_title" className="form-label form-lbl label-effect">Descriptive Title</label>
                     </div>
                     <div className="mb-3">
