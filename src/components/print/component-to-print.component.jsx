@@ -15,14 +15,15 @@ class ComponentToPrint extends React.PureComponent {
 
     async componentDidMount(){
         // let student_id = this.props.match.params.id;
-       let student_id = window.location.pathname.split("/").pop();
-        const resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/print/${student_id}`);
+    //    let student_id = window.location.pathname.split("/").pop();
+       let last_name = window.location.pathname.split("/").pop();
+        const resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/print/${last_name}`);
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const sortYear = resp.data.studentData.sort((a, b) => a.year.localeCompare(b.year));
+            const sortYear = resp.data.student.sort((a, b) => a.year.localeCompare(b.year));
             if(resp.data.status === 200){
                 this.setState({
                     student: sortYear,

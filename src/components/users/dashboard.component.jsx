@@ -86,7 +86,7 @@ class Dashboard extends React.Component{
             userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
-                getStudent = item.student_id;
+                getStudent = item.last_name;
                 if(item.re_exam === null){
                     if(item.grade === '1.0' || item.grade <= '3.0'){
                         remarks = "Passed";
