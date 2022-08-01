@@ -79,6 +79,9 @@ a{
             padding: 0 20px;
         }
         .mb-3{
+            .descriptive_title{
+                width: 670px;
+            }
             position: relative;
             .form-lbl{
                 font-size: 16px;
@@ -486,12 +489,23 @@ a{
 
             .update-form{
                 width: 80%;
+                .mb-3{
+                    .descriptive_title{
+                        width: 320px;
+                    }
+                   }
 
             }
         }
         
         .create-form{
             width: 80%;
+
+        .mb-3{
+            .descriptive_title{
+                width: 320px;
+            }
+        }
         }
     }
 }
@@ -516,6 +530,11 @@ a{
                 select{
                     width: 250px;
                 }
+                .mb-3{
+                    .descriptive_title{
+                        width: 250px;
+                    }
+                   }
             }
         }
         .create-form{
@@ -525,6 +544,11 @@ a{
             select{
                 width: 280px;
             }
+           .mb-3{
+            .descriptive_title{
+                width: 280px;
+            }
+           }
         }
 
         .homepage{

@@ -8,6 +8,7 @@ class EditInfo extends React.Component{
         super(props);
 
         this.state = {
+            student_id: '',
             first_name: '',
             last_name: '',
             subject_code: '',
@@ -31,6 +32,7 @@ class EditInfo extends React.Component{
         }else{
             if(resp.data.status === 200){
                 this.setState({
+                    student_id: resp.data.student.student_id,
                       first_name: resp.data.student.first_name,
                       last_name: resp.data.student.last_name,
                       subject_code: resp.data.student.subject_code,
@@ -55,6 +57,7 @@ class EditInfo extends React.Component{
                 swal("Information Updated Successfully!","Redirecting...", "success");
                 setTimeout(() => window.location.href = "/dashboard", 1000);
                     this.setState({
+                        student_id: '',
                         first_name: '',
                         last_name: '',
                         subject_code: '',
@@ -114,6 +117,10 @@ class EditInfo extends React.Component{
                         <p></p>
                     </div>
                     <div className="mb-3">
+                    <input type="text" maxLength="40" className="form-control input-effect" id="student_id" name="student_id" value={this.state.student_id} onChange = {e => this.setState({student_id:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="words"/>
+                        <label htmlFor="student_id" className="form-label form-lbl label-effect">Student ID</label>
+                    </div>
+                    <div className="mb-3">
                     <input type="text" maxLength="40" className="form-control input-effect" id="first_name" name="first_name" value={this.state.first_name} onChange = {e => this.setState({first_name:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="words"/>
                         <label htmlFor="first_name" className="form-label form-lbl label-effect">Full Name</label>
                     </div>
@@ -126,7 +133,7 @@ class EditInfo extends React.Component{
                         <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="40" className="form-control input-effect" id="descriptive_title" name="descriptive_title" value={this.state.descriptive_title} onChange = {e => this.setState({descriptive_title:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
+                    <input type="text" maxLength="40" className="form-control input-effect descriptive_title" id="descriptive_title" name="descriptive_title" value={this.state.descriptive_title} onChange = {e => this.setState({descriptive_title:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
                         <label htmlFor="descriptive_title" className="form-label form-lbl label-effect">Descriptive Title</label>
                     </div>
                     <div className="mb-3">
