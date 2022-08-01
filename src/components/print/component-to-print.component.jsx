@@ -22,7 +22,7 @@ class ComponentToPrint extends React.PureComponent {
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const sortYear = [...resp.data.studentData].sort((a, b) => a.year.localeCompare(b.year));
+            const sortYear = resp.data.studentData.sort((a, b) => a.year.localeCompare(b.year));
             if(resp.data.status === 200){
                 this.setState({
                     student: sortYear,
@@ -30,7 +30,7 @@ class ComponentToPrint extends React.PureComponent {
                 });
             }
         }
-        console.log(resp.data.studentData);
+        console.log(resp.data);
     }
     render() {
         let userTable = "";
