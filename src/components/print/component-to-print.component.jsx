@@ -22,15 +22,15 @@ class ComponentToPrint extends React.PureComponent {
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const sortYear = resp.data.student.sort((a, b) => a.year.localeCompare(b.year));
+            const sortYear = resp.data.studentData.length.sort((a, b) => a.year.localeCompare(b.year));
             if(resp.data.status === 200){
                 this.setState({
-                    student: sortYear,
+                    student: resp.data.studentData,
                     loading: false,
                 });
             }
         }
-        console.log(resp.data.response);
+        console.log(resp.data.studentData);
     }
     render() {
         let userTable = "";
@@ -38,7 +38,7 @@ class ComponentToPrint extends React.PureComponent {
         if(this.state.loading === true){
             userTable = <tr><td colSpan="5" className='loading-indicator'><h3>Loading...</h3></td></tr>;
         }else{
-        userTable = this.state.student.filter((item) => {
+        userTable = this.state.student.length.map((item) => {
             if(item.re_exam === null){
                 if(item.grade === '1.0' || item.grade <= '3.0'){
                     remarks = "Passed";
@@ -56,6 +56,7 @@ class ComponentToPrint extends React.PureComponent {
             }
             return(
                 <tr key={item.id}>
+                    <td>{item.student_id}</td>
                     <td>{item.last_name}</td>
                     <td>{item.first_name}</td>
                     <td>{item.subject_code}</td>
@@ -77,6 +78,7 @@ class ComponentToPrint extends React.PureComponent {
             <table className="table home-table home-table-width">
                     <thead>
                         <tr>
+                            <th scope="col">Student ID</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">First Name</th>
                             <th scope="col">Subject Code</th>
