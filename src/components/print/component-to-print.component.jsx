@@ -22,10 +22,10 @@ class ComponentToPrint extends React.PureComponent {
             window.location.href = '/error';
             console.log('You are not Authrozied');
         }else{
-            const sortYear = resp.data.studentData.length.sort((a, b) => a.year.localeCompare(b.year));
+            const sortYear = [...resp.data.studentData].sort((a, b) => a.year.localeCompare(b.year));
             if(resp.data.status === 200){
                 this.setState({
-                    student: resp.data.studentData,
+                    student: sortYear,
                     loading: false,
                 });
             }
@@ -38,7 +38,7 @@ class ComponentToPrint extends React.PureComponent {
         if(this.state.loading === true){
             userTable = <tr><td colSpan="5" className='loading-indicator'><h3>Loading...</h3></td></tr>;
         }else{
-        userTable = this.state.student.length.map((item) => {
+        userTable = [...this.state.student].map((item) => {
             if(item.re_exam === null){
                 if(item.grade === '1.0' || item.grade <= '3.0'){
                     remarks = "Passed";
