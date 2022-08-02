@@ -73,8 +73,8 @@ class Dashboard extends React.Component{
         let userFullname = this.state.fullname;
        
         const filteredStudentsByName = this.state.students.filter((student) => {
-            return student.last_name.toLocaleLowerCase().includes(this.state.nameSearchField) || 
-            student.year.includes(this.state.nameSearchField) || student.descriptive_title.toLocaleLowerCase().includes(this.state.nameSearchField) || student.first_name.toLocaleLowerCase().includes(this.state.nameSearchField);
+            return (student.last_name + " " + student.first_name).toLocaleLowerCase().includes(this.state.nameSearchField) || 
+            student.year.includes(this.state.nameSearchField) || student.descriptive_title.toLocaleLowerCase().includes(this.state.nameSearchField);
         });
         // const filteredStudentsByYear = this.state.students.filter((student) => {
         //     return student.year.includes(this.state.yearSearchField);
@@ -86,7 +86,7 @@ class Dashboard extends React.Component{
             userTable = <tr><td colSpan="5" className='loading-indicator'><span>Loading...</span></td></tr>;
         }else{
             userTable = filteredStudentsByName.map((item) => {
-                getStudent = item.last_name;
+                getStudent = item.last_name + "/" + item.first_name;
                 if(item.re_exam === null){
                     if(item.grade === '1.0' || item.grade <= '3.0'){
                         remarks = "Passed";

@@ -17,7 +17,8 @@ class ComponentToPrint extends React.PureComponent {
         // let student_id = this.props.match.params.id;
     //    let student_id = window.location.pathname.split("/").pop();
        let last_name = window.location.pathname.split("/").pop();
-        const resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/print/${last_name}`);
+       let first_name = window.location.pathname.split("/").pop();
+        const resp = await axios.get(`https://students-records-laravel.herokuapp.com/api/dashboard/print/${last_name}/${first_name}`);
         let userInfo = JSON.parse(localStorage.getItem('user'));
         if(!userInfo || userInfo === null){
             window.location.href = '/error';

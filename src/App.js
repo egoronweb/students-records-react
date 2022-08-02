@@ -43,7 +43,7 @@ function App() {
             <Route exact path= "/dashboard" component={Dashboard} />
             <Route exact path = "/dashboard/create" component={CreateInfo} />
             <Route exact path = "/dashboard/edit/:id" component={EditInfo} />
-            <Route exact path = "/dashboard/print/:last_name" component={Printing} />
+            <Route exact path = "/dashboard/print/:last_name/:first_name" component={Printing} />
           {/* </ProtectedRoutes> */}
         </Switch>
       </Router>
