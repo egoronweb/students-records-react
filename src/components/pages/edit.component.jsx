@@ -122,7 +122,7 @@ class EditInfo extends React.Component{
                         <label htmlFor="last_name" className="form-label form-lbl label-effect">Last Name</label>
                     </div>
                     <div className="mb-3">
-                    <input type="text" maxLength="10" className="form-control input-effect" id="subject_code" name="subject_code" value={this.state.subject_code} onChange = {e => this.setState({subject_code:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
+                    <input type="text" className="form-control input-effect" id="subject_code" name="subject_code" value={this.state.subject_code} onChange = {e => this.setState({subject_code:e.target.value.toLocaleUpperCase()})} required autoComplete="off" autoCapitalize="on"/>
                         <label htmlFor="subject_code" className="form-label form-lbl label-effect">Subject Code</label>
                     </div>
                     <div className="mb-3">
